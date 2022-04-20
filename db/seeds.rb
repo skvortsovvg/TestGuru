@@ -9,10 +9,12 @@
 #Пользователи
 User.create([ {name: "Vladimir"}, {name: "Dmitry"}, {name: "Alexander"} ])
 
+firstUserID = User.first.id
+
 #ТЕСТЫ Backend
 category = Category.create(title: "Backend")
 
-new_test = Test.create(title: "Ruby", level: 2, category_id: category.id, author_id: User.first.id)
+new_test = Test.create(title: "Ruby", level: 2, category_id: category.id, author_id: firstUserID)
 
 question = Question.create(body: "Где указана пустая переменная (без значения)?", test_id: new_test.id)
 Answer.create(body: "some = nil", correct: true, question_id: question.id)
@@ -83,7 +85,7 @@ Answer.create(body: "<a>жирный</a>", question_id: question.id)
 
 Result.create(user_id: User.first.id, test_id: new_test.id)
 
-new_test = Test.create(title: "JavaScript", level: 2, category_id: category.id, author_id: User.first.id)
+new_test = Test.create(title: "JavaScript", level: 2, category_id: category.id, author_id: firstUserID)
 
 question = Question.create(body: "В чем отличие между локальной и глобальной переменной?", test_id: new_test.id)
 Answer.create(body: "Глобальные можно переопределять, локальные нельзя", correct: true, question_id: question.id)
