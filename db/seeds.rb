@@ -46,7 +46,7 @@ Answer.create(body: "downcase()", correct: true, question_id: question.id)
 Answer.create(body: "upcase()", question_id: question.id)
 Answer.create(body: "down()", question_id: question.id)
 
-Result.create(user_id: User.first.id, test_id: new_test.id)
+Result.create(user_id: firstUserID, test_id: new_test.id)
 
 #ТЕСТЫ Frontend
 category = Category.create(title: "Frontend")
@@ -83,7 +83,7 @@ Answer.create(body: "<p>жирный</p>",  question_id: question.id)
 Answer.create(body: "<br>жирный</br>", question_id: question.id)
 Answer.create(body: "<a>жирный</a>", question_id: question.id)
 
-Result.create(user_id: User.first.id, test_id: new_test.id)
+Result.create(user_id: firstUserID, test_id: new_test.id)
 
 new_test = Test.create(title: "JavaScript", level: 2, category_id: category.id, author_id: firstUserID)
 
