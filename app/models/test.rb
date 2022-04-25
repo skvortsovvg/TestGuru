@@ -6,7 +6,6 @@ class Test < ApplicationRecord
   belongs_to :author, class_name: "User"
 
   def self.find_by_title(str)
-    # select * from tests inner join categories on tests.category_id = categories.id and categories.title like "%end%"
     self.joins(:category).where('categories.title like :str', str: "%#{str}%").order('title DESC')
   end
 end
