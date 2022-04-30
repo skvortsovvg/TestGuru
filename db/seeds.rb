@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 #Пользователи
-User.create([ {name: "Vladimir"}, {name: "Dmitry"}, {name: "Alexander"} ])
+User.create([ {name: "Vladimir", email: "Vladimir@test.ru"}, {name: "Dmitry", email: "Dmitry@test.ru" }, {name: "Alexander", email: "Alexander@test.ru"} ])
 
 firstUserID = User.first.id
 

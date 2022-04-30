@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :results
   has_many :tests, through: :results
     
+  validates :name, :email, presence: true
+
   def my_tests(level = nil)
     tests.where('tests.level = :level or :level is null', level: level)
   end
