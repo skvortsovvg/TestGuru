@@ -5,8 +5,7 @@ class Test < ApplicationRecord
   belongs_to :category
   belongs_to :author, class_name: "User"
 
-  validates :title, presence: true,
-                    uniqueness: true
+  validates :title, presence: true, uniqueness: { scope: :level } 
 
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
@@ -14,5 +13,9 @@ class Test < ApplicationRecord
   scope :normal, -> { where(level: (2..5)) }
   scope :hard, -> { where(level: (5..)) }
 
-  scope :find_by_title, -> (str) { joins(:category).where('categories.title like :str', str: "%#{str}%").order('title DESC') }
+  scope :by_category, -> (str) { joins(:category).where('categories.title like :str', str: "%#{str}%") }
+
+  def self.find_by_title_category(str)
+    by_category(str).order("tests.title DESC").pluck("tests.title")
+  end
 end
