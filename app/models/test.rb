@@ -18,4 +18,5 @@ class Test < ApplicationRecord
   def self.find_by_title_category(str)
     by_category(str).order("tests.title DESC").pluck("tests.title")
   end
+
 end

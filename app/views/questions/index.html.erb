@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<p>
+  <h1>Вопросы теста "<%= @test.title %>" </h1>
+  <%= link_to "Добавить новый вопрос", new_test_question_path %>
+</p>
+
+<% n = 1 %> 
+<% @test.questions.each do |qst| %>
+  <div id="tests">
+    <td><%= render inline: "#{n}. #{qst.body}" %></td>
+  </div>
+  <p>
+    <%= button_to "Открыть", qst, method: :get, form: {style: 'display:inline-block;'} %> |
+    <%= button_to "Удалить", qst, method: :delete, form: {style: 'display:inline-block;'} %>
+  </p>
+  </br>
+  <% n += 1 %>
+<% end %>
