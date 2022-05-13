@@ -11,8 +11,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = Question.create(question_params)
-    render plain: question.inspect 
+    question = @test.questions.new(question_params)
+    if question.save
+      render plain: question.inspect
+    else
+      render plain: question.errors.full_messages
+    end 
   end
 
   def new
@@ -38,6 +42,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:body).merge(test: @test)
+    params.require(:question).permit(:body)
   end
 end
