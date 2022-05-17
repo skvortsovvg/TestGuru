@@ -1,11 +1,1 @@
-<h1><%= question_header(@question, @question.test) %></h1>
-
-<%= form_with model: @question do |form| %>
-  <p>
-    <%= form.label :body, "Текст вопроса"%><br>
-    <%= form.text_area :body, cols: 100, rows: 5 %>
-  </p>
-  <p>
-    <%= form.submit "Сохранить изменения" %>
-  </p>
-<% end %>
+<%= render "question_form" %>

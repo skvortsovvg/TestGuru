@@ -1,13 +1,1 @@
-<h1><%= question_header(@question, @test) %></h1>
-
-<%= form_with model: [@test, @question] do |form| %>
-  <p>
-    <%= form.label :body, "Текст вопроса"%><br>
-    <%= form.text_area :body, cols: 100, rows: 5 %>
-  </p>
-  <p>
-    <%= form.submit "Добавить вопрос" %>
-  </p>
-<% end %>
-
-<%= link_to "Назад", @test %>
+<%= render "question_form" %>
