@@ -1,10 +1,8 @@
 <div id="<%= dom_id test %>">
   <p>
-    <strong><%= test.title %></strong>
+    <strong><%= "#{test.title} (#{pluralize(test.questions.count, "question" )})" %></strong>
     <p>
       <%= link_to "Открыть", test %>
-      <%= link_to "Редактировать", edit_test_path(test) %>
-      <%= link_to "Список вопросов", test_questions_path(test) %>
     </p>
 
   </p>

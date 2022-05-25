@@ -1,2 +1,3 @@
-<h1>Вопрос к тесту</h1>
+<h1>Вопрос теста "<%= @question.test.title %> ("</h1>
 <p><%= render inline: @question.body %></p>
+<%= link_to "К вопросам теста", test_path(@question.test) %>
