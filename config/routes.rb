@@ -8,5 +8,17 @@ Rails.application.routes.draw do
     resources :questions, shallow: true do
         resources :answers, shallow: true
     end
+
+    member do
+      post :start
+    end
   end
+
+  # GET /results/1/finish
+  resources :results, only: %i[show update] do
+    member do
+      post :finish
+    end
+  end
+
 end
