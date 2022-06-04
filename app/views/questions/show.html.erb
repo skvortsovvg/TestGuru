@@ -1,3 +1,13 @@
-<h1>Вопрос теста "<%= @question.test.title %> ("</h1>
-<p><%= render inline: @question.body %></p>
+<h1>Вопрос теста "<%= @question.test.title %>"</h1>
+<p>
+  <%= render inline: @question.body %>
+</p>
+
+<h2>Варианты ответов:</h2>
+
+<ol>
+  <%= render @question.answers %>
+</ol>
+
+<%= link_to "Редактировать", edit_question_path(@question) %>
 <%= link_to "К вопросам теста", test_path(@question.test) %>
