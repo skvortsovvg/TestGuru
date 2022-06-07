@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # GET /results/1/finish
   resources :results, only: %i[show update] do
     member do
-      post :finish
+      get :finish
     end
   end
 

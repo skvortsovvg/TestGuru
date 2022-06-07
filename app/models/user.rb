@@ -9,7 +9,7 @@
     tests.where('tests.level = :level or :level is null', level: level)
   end
 
-  def test_passage(test)
-    results.order(id: :desc).find_by(test_id: test.id)
+  def test_passing(test)
+    results.where(test: test).where.not(current_qst: nil).first
   end
 end

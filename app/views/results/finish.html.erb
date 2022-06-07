@@ -1,0 +1,11 @@
+<h1>Тест завершен!</h1>
+
+<% if @result.resume >= 85 %>
+  <h2 style="color: green"><span style="color: black">Ваш результат:</span> <%= @result.resume %>%</h2>
+  <h2 style="color: green">ТЕСТ УСПЕШНО ПРОЙДЕН!</h2>
+<% else %>
+  <h2 style="color: red"><span style="color: black">Ваш результат:</span> <%= @result.resume %>%</h2>
+  <h2 style="color: red">ТЕСТ НЕ ПРОЙДЕН!</h2>
+<% end %>
+
+<%= link_to "К тестам", tests_path %>
