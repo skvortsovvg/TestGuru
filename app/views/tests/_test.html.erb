@@ -1,8 +1,9 @@
-<div id="<%= dom_id test %>">
+ <div id="<%= dom_id test %>">
   <p>
     <strong><%= "#{test.title} (#{pluralize(test.questions.count, "question" )})" %></strong>
     <p>
-      <%= link_to "Открыть", test %>
+      <%= button_to "Открыть", test, method: :get, form: {style: 'display:inline-block;'} %> |
+      <%= button_to "Начать прохождение", start_test_path(test), method: :post, form: {style: 'display:inline-block;'} %> |
     </p>
 
   </p>

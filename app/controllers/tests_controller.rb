@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: %i[show]
+  before_action :set_test, only: %i[show start]
 
   def index
     @tests = Test.all
@@ -10,6 +10,12 @@ class TestsController < ApplicationController
   end
 
   def new
+  end
+
+  def start    
+    @user = User.first
+    @user.tests << @test if @user.test_passing(@test).nil?
+    redirect_to @user.test_passing(@test)
   end
 
   private

@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<p>
+  <%= @answer.question.body %>  
+</p>
+
+<p>
+  <b>Answer:</b>
+  <%= @answer.body %>
+</p>
+
+<p>
+  <b>Correct:</b>
+  <%= @answer.correct %>
+</p>
+
+<div>
+  <%= link_to "Back", question_path(@answer.question) %>
+</div>
