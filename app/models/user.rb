@@ -10,6 +10,6 @@
   end
 
   def test_passing(test)
-    results.where(test: test).where.not(current_qst: nil).first
+    results.where(test: test).where.not(current_question: nil).first
   end
 end

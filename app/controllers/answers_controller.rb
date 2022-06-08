@@ -15,35 +15,28 @@ class AnswersController < ApplicationController
 
   # POST /answers
   def create
-    @answer = Answer.new(answer_params)
+    @answer = @question.answers.new(answer_params)
 
-    respond_to do |format|
-      if @answer.save
-        redirect_to answer_url(@answer), notice: "Answer was successfully created."
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if @answer.save
+      redirect_to answer_url(@answer), notice: "Answer was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /answers/1
   def update
-    respond_to do |format|
-      if @answer.update(answer_params)
-        redirect_to answer_url(@answer), notice: "Answer was successfully updated."
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if @answer.update(answer_params)
+      redirect_to answer_url(@answer), notice: "Answer was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /answers/1
   def destroy
     @answer.destroy
-
-    respond_to do |format|
-      redirect_to answers_url, notice: "Answer was successfully destroyed." 
-    end
+    redirect_to answers_url, notice: "Answer was successfully destroyed." 
   end
 
   private

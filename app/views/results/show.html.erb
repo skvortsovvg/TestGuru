@@ -1,15 +1,15 @@
 <h1>Прохождение теста <%= @result.test.title %></h1>
 
 <p>
-  Вопрос № <%= "#{@result.answered_questions + 1} из #{@result.test.questions.count} . #{@result.current_qst.body}"  %>
+  Вопрос № <%= "#{@result.answered_questions + 1} из #{@result.test.questions.count} . #{@result.current_question.body}"  %>
 </p>
 
 <%= form_with url: result_path(@result), method: :put do |form| %>
-  <%= form.collection_radio_buttons :answer_id, @result.current_qst.answers, :id, :body, include_hidden: false do |b| %>
+  <%= form.collection_radio_buttons :answer_id, @result.current_question.answers, :id, :body, include_hidden: false do |b| %>
   <p>
     <%= b.radio_button %>
     <%= b.label %>
   </p>
   <% end %>
-  <%= form.submit "Next >>" %>
+  <%= link_to "К тестам", tests_path, style: "margin-right:20px" %><%= form.submit "Next >>" %>
 <% end %>
