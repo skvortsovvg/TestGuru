@@ -6,6 +6,8 @@ class Result < ApplicationRecord
   before_create :before_create_set_qst
   before_update :before_update_next_qst
 
+  PASSING_LIMIT = 85
+  
   def answered_questions
     test.questions.where('id < ?', current_question.id).count
   end
@@ -22,7 +24,7 @@ class Result < ApplicationRecord
   end
   
   def success?
-    result >= 85
+    result >= PASSING_LIMIT
   end
 
   def result
