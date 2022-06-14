@@ -14,9 +14,8 @@ class TestsController < ApplicationController
   end
 
   def start    
-    @user = User.first
-    @user.tests << @test if @user.test_passing(@test).nil?
-    redirect_to @user.test_passing(@test)
+    current_user.tests << @test unless current_user.test_passing(@test)
+    redirect_to current_user.test_passing(@test)
   end
 
   private
