@@ -5,6 +5,8 @@
 
   validates :name, :email, presence: true
   
+  has_secure_password
+
   def my_tests(level = nil)
     tests.where('tests.level = :level or :level is null', level: level)
   end
