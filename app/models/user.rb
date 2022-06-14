@@ -3,7 +3,9 @@
   has_many :results
   has_many :tests, through: :results
 
-  validates :name, :email, presence: true
+  validates :email, presence: true, uniqueness: true
+  validate :validate_email_format
+  validates :name, presence: true
   
   has_secure_password
 
@@ -13,5 +15,11 @@
 
   def test_passing(test)
     results.where(test: test).where.not(current_question: nil).first
+  end
+
+  private 
+
+  def validate_email_format
+    errors.add :email, 'incorrect format' if email !~ URI::MailTo::EMAIL_REGEXP #/\A[\w+-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   end
 end

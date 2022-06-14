@@ -6,6 +6,7 @@ private
 
   def authenticate!
     unless current_user
+      cookies[:direction] = request.original_url
       redirect_to login_path
     end
   end

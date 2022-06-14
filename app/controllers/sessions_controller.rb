@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to (cookies[:direction] ? cookies[:direction] : root_path)
     else
       flash.now[:alert] = 'Get out of here! Go register first.'
       render :new
