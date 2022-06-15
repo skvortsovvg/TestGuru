@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-#Пользователи
-User.create([ {name: "Vladimir", email: "Vladimir@test.ru"}, {name: "Dmitry",  email: "Dmitry@test.ru"}, {name: "Alexander", email: "Alexander@test.ru"} ])
+# Пользователи
+User.create([{ name: "Vladimir", email: "Vladimir@test.ru" }, { name: "Dmitry", email: "Dmitry@test.ru" }, { name: "Alexander", email: "Alexander@test.ru" }])
 
 firstUserID = User.first.id
 
-#ТЕСТЫ Backend
+# ТЕСТЫ Backend
 category = Category.create(title: "Backend")
 
 new_test = Test.create(title: "Ruby", level: 2, category_id: category.id, author_id: firstUserID)
@@ -48,7 +48,7 @@ Answer.create(body: "down()", question_id: question.id)
 
 Result.create(user_id: firstUserID, test_id: new_test.id)
 
-#ТЕСТЫ Frontend
+# ТЕСТЫ Frontend
 category = Category.create(title: "Frontend")
 
 new_test = Test.create(title: "HTML", level: 1, category_id: category.id, author_id: User.last.id)
@@ -79,7 +79,7 @@ Answer.create(body: "doctype", question_id: question.id)
 
 question = Question.create(body: "Как сделать текст жирным?", test_id: new_test.id)
 Answer.create(body: "<strong>жирный</strong>", correct: true, question_id: question.id)
-Answer.create(body: "<p>жирный</p>",  question_id: question.id)
+Answer.create(body: "<p>жирный</p>", question_id: question.id)
 Answer.create(body: "<br>жирный</br>", question_id: question.id)
 Answer.create(body: "<a>жирный</a>", question_id: question.id)
 
@@ -112,7 +112,7 @@ Answer.create(body: "var num_1;", question_id: question.id)
 
 question = Question.create(body: "Где верно указан запуск всплывающего окна?", test_id: new_test.id)
 Answer.create(body: 'new alert ("Hi")', correct: true, question_id: question.id)
-Answer.create(body: 'alert ("Hi")',  question_id: question.id)
+Answer.create(body: 'alert ("Hi")', question_id: question.id)
 Answer.create(body: 'info ("Hi")', question_id: question.id)
 Answer.create(body: 'Нет верных вариантов', question_id: question.id)
 

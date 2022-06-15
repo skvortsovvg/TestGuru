@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+  before_action :authenticate!
   before_action :set_test, only: %i[show start]
 
   def index
@@ -9,13 +10,11 @@ class TestsController < ApplicationController
     redirect_to test_questions_path(@test)
   end
 
-  def new
-  end
+  def new; end
 
-  def start    
-    @user = User.first
-    @user.tests << @test if @user.test_passing(@test).nil?
-    redirect_to @user.test_passing(@test)
+  def start
+    current_user.tests << @test unless current_user.test_passing(@test)
+    redirect_to current_user.test_passing(@test)
   end
 
   private
@@ -23,5 +22,4 @@ class TestsController < ApplicationController
   def set_test
     @test = Test.find(params[:id])
   end
-
 end

@@ -10,7 +10,26 @@
   </head>
 
   <body>
+      <nav class="navbar" style="height: 20px; margin-top: 5px; margin-bottom: 5px; margin-right: 25px;">
+        <div style="width: 50%; margin-top: 7px; text-align: left; float: left; vertical-align:middle;">
+          <b><%= link_to "TestGuru", tests_path, style: "margin-left:25px" %></b>
+        </div>
+        
+        <div style="width: 50%; text-align: right; float: left;vertical-align:middle;">
+          <% if logged_in? %>
+            Welcome, <b> <%= current_user.name %></b> Guru
+            <%= button_to "Выйти", logout_path, method: :get, style: "margin-right:25px; display:inline-block;" %>
+          <% else %>
+            <%= button_to "Войти", login_path, method: :get, form: { style: 'display:inline-block;' }, style: "margin-top: 5px; margin-right:5px;" %>
+            <%= button_to "Зарегистрироваться", signup_path, method: :get, form: { style: 'display:inline-block;' }, style: "margin-top: 5px; margin-right:25px; display:inline-block;" %>
+          <% end %>
+        </div>
+      </nav>
+    
+    <br><hr/>
+    
     <%= yield %>
+    
     <%= render 'shared/footer' %>
   </body>
 </html>
