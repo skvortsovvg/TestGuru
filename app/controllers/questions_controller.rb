@@ -5,22 +5,19 @@ class QuestionsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_qst_not_found
 
-  def index
-  end
+  def index; end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @question.update(question_params)
       redirect_to @question.test
     else
       render plain: @question.errors.full_messages
-    end 
-  end  
+    end
+  end
 
   def create
     question = @test.questions.new(question_params)
@@ -28,7 +25,7 @@ class QuestionsController < ApplicationController
       redirect_to question.test
     else
       render plain: question.errors.full_messages
-    end 
+    end
   end
 
   def new
@@ -43,7 +40,7 @@ class QuestionsController < ApplicationController
   private
 
   def rescue_with_qst_not_found
-    render plain: "Question was not found"  
+    render plain: "Question was not found"
   end
 
   def set_test

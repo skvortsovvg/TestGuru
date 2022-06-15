@@ -7,22 +7,20 @@ class Result < ApplicationRecord
   before_update :before_update_next_qst
 
   PASSING_LIMIT = 85
-  
+
   def answered_questions
     test.questions.where('id < ?', current_question.id).count
   end
 
   def accept!(answer_id)
-    if current_question.answers.find(answer_id).correct
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if current_question.answers.find(answer_id).correct
     save!
   end
 
   def completed?
     current_question.nil?
   end
-  
+
   def success?
     result >= PASSING_LIMIT
   end
@@ -34,9 +32,10 @@ class Result < ApplicationRecord
   private
 
   def before_create_set_qst
-    self.current_question = test.questions.first if test.present? && self.completed? 
+    self.current_question = test.questions.first if test.present? && completed?
   end
+
   def before_update_next_qst
-    self.current_question = test.questions.where('id > ?', current_question.id).order(:id).first if test.present? && !self.completed? 
+    self.current_question = test.questions.where('id > ?', current_question.id).order(:id).first if test.present? && !completed?
   end
 end

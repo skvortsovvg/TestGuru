@@ -10,10 +10,9 @@ class TestsController < ApplicationController
     redirect_to test_questions_path(@test)
   end
 
-  def new
-  end
+  def new; end
 
-  def start    
+  def start
     current_user.tests << @test unless current_user.test_passing(@test)
     redirect_to current_user.test_passing(@test)
   end
@@ -23,5 +22,4 @@ class TestsController < ApplicationController
   def set_test
     @test = Test.find(params[:id])
   end
-
 end

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   root "tests#index"
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :tests do
     resources :questions, shallow: true do
-        resources :answers, shallow: true
+      resources :answers, shallow: true
     end
 
     member do
@@ -27,5 +26,4 @@ Rails.application.routes.draw do
       get :finish
     end
   end
-
 end
