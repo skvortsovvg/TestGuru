@@ -3,12 +3,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "tests#index"
 
-  get :signup, to: 'users#new'
-  get :login, to: 'sessions#new'
-  get :logout, to: 'sessions#destroy'
-
-  resources :users, only: :create
-  resource :session, only: %i[new create destroy]
+  devise_for :users, path: :students, path_names: { sign_in: :login, sing_out: :logout }
 
   resources :tests do
     resources :questions, shallow: true do
