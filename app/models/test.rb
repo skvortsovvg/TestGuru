@@ -15,6 +15,12 @@ class Test < ApplicationRecord
 
   scope :by_category, ->(str) { joins(:category).where('categories.title like :str', str: "%#{str}%") }
 
+  def level_represent
+    return :easy if level <= 1
+    return :normal if (2..5).include?(level)
+    return :hard
+  end
+
   def self.find_by_title_category(str)
     by_category(str).order("tests.title DESC").pluck("tests.title")
   end

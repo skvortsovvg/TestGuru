@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :tests, through: :results
 
   validates :email, presence: true, uniqueness: true, format: URI::MailTo::EMAIL_REGEXP
-  validates :name, presence: true
+  validates :first_name, presence: true
 
   def my_tests(level = nil)
     tests.where('tests.level = :level or :level is null', level:)
