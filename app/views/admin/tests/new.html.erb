@@ -1,6 +1,6 @@
 <h1>Создаем новый тест</h1>
 
-<%= form_with model: @test do |form| %>
+<%= form_with model: [:admin, @test] do |form| %>
   <%= render 'shared/errors', errors: @test.errors %>
 
   <p>

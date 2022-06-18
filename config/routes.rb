@@ -3,15 +3,19 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "tests#index"
 
-  devise_for :users, path: :students, path_names: { sign_in: :login, sing_out: :logout }
+  devise_for :users, path: :students, path_names: { sign_in: :login, sign_out: :logout }
 
-  resources :tests do
-    resources :questions, shallow: true do
-      resources :answers, shallow: true
-    end
-
+  resources :tests, only: :index do
     member do
       post :start
+    end
+  end
+
+  namespace :admin do
+    resources :tests do
+      resources :questions, shallow: true do
+        resources :answers, shallow: true
+      end
     end
   end
 
