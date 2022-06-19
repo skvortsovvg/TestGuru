@@ -1,0 +1,16 @@
+<h1>Вопрос теста "<%= @question.test.title %>"</h1>
+  
+<%= render 'shared/errors', object: @question %>
+
+<p>
+  <%= render inline: @question.body %>
+</p>
+
+<h2>Варианты ответов:</h2>
+
+<ol>
+  <%= render @question.answers %>
+</ol>
+
+<%= link_to "Добавить ответ", new_admin_question_answer_path(@question) %> | 
+<%= link_to "К вопросам теста", admin_test_path(@question.test) %>

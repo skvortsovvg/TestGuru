@@ -1,7 +1,0 @@
-<li>  <%= answer.body %><br>
-  <p>
-    <%= button_to "Открыть", answer, method: :get, form: {style: 'display:inline-block;'} %> |
-    <%= button_to "Редактировать", edit_answer_path(answer), method: :get, form: {style: 'display:inline-block;'} %> |
-    <%= button_to "Удалить", answer_path(answer), method: :delete, data: {confirm: 'Are you shure?'}, form: {style: 'display:inline-block;'} %>
-  </p>
-</li>

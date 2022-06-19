@@ -1,20 +1,19 @@
 class ApplicationController < ActionController::Base
-  helper_method :logged_in?, :current_user
+  before_action :authenticate_user! 
+  before_action :configure_permitted_parameters, only: :create, if: :devise_controller?
+  after_action  :hello, only: :create, if: Proc.new { is_a?(::Devise::SessionsController) }
 
-  private
+  protected
 
-  def authenticate!
-    unless current_user
-      cookies[:direction] = request.original_url
-      redirect_to login_path
-    end
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || resource.admin? ? admin_tests_path : root_path
   end
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  def hello
+    flash[:alert] = "Привет, #{current_user.first_name.capitalize}!"
   end
 
-  def logged_in?
-    current_user.present?
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
   end
 end
