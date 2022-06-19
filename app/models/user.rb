@@ -15,6 +15,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: URI::MailTo::EMAIL_REGEXP
   validates :first_name, presence: true
 
+  def admin?
+    self.is_a?(Admin)
+  end
+
   def my_tests(level = nil)
     tests.where('tests.level = :level or :level is null', level:)
   end

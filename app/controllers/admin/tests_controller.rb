@@ -28,11 +28,6 @@ class Admin::TestsController < Admin::BaseController
     redirect_to admin_tests_path, alert: "Тест был удален"
   end
 
-  def start
-    current_user.tests << @test unless current_user.test_passing(@test)
-    redirect_to current_user.test_passing(@test)
-  end
-
   private
 
   def test_params
