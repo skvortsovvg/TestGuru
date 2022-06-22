@@ -1,6 +1,6 @@
 <p>
-  <h1>Вопросы теста "<%= @test.title %>" </h1>
-  <%= link_to "Добавить новый вопрос", new_admin_test_question_path %>
+  <h1><%= t('.title') %> "<%= @test.title %>" </h1>
+  <%= link_to t('.add_new'), new_admin_test_question_path %>
 </p>
 
 <% @test.questions.each.with_index do |qst, i| %>
@@ -8,12 +8,12 @@
     <td><%= render inline: "#{i+1}. #{qst.body}" %></td>
   </div>
   <p>
-    <%= button_to "Открыть", admin_question_path(qst), method: :get, form: {style: 'display:inline-block;'} %> |
-    <%= button_to "Редактировать", edit_admin_question_path(qst), method: :get, form: {style: 'display:inline-block;'} %> |
-    <%= button_to "Удалить", admin_question_path(qst), method: :delete, form: {style: 'display:inline-block;'} %>
+    <%= button_to t('.open'), admin_question_path(qst), method: :get, form: {style: 'display:inline-block;'} %> |
+    <%= button_to t('.edit'), edit_admin_question_path(qst), method: :get, form: {style: 'display:inline-block;'} %> |
+    <%= button_to t('.delete'), admin_question_path(qst), method: :delete, form: {style: 'display:inline-block;'} %>
   </p>
   </br>
 <% end %>
 
-<%= link_to "Назад", admin_tests_path %>
+<%= link_to t('nav_back'), admin_tests_path %>
 

@@ -1,0 +1,98 @@
+
+ru:
+  activerecord:
+    attributes:
+      test:
+        category: Категория
+        title: Наименование
+    errors:
+      models:
+        test:
+          attributes:
+            category:
+              required: "не выбрана из списка"
+            title:
+              blank: "не заполнено"
+
+  hello: "Привет"
+  nav_back: "Назад"
+  admin_menu: "Панель администратора"
+  welcome: "Добро пожаловать"
+  
+  helpers:
+    select:
+      prompt: "Сделайте выбор"
+    submit:  
+      test:
+        create: "Создать тест"
+        update: "Сохранить изменения"
+      question:
+        create: "Создать вопрос"
+        update: "Сохранить изменения"
+      answer:
+        create: "Создать ответ"
+        update: "Сохранить изменения"
+    label:
+      test:
+        title:    "Наименование теста"
+        level:    "Уровень"
+        category: "Категория"
+      question:
+        body:    "Текст вопроса"
+      answer:
+        body:    "Текст ответа"
+        correct:  "Правильный ответ"
+
+  layouts:
+    application:
+      logout: "Выйти"
+      login: "Войти"
+      register: "Регистрация" 
+
+  tests:
+    index:
+      title:  "Список тестов"
+    test:
+      start:  "Начать тестирование"
+
+  admin:
+    nav:
+      logout: "Выйти"
+    tests:
+      test:
+        open:   "Открыть"
+        delete: "Удалить"             
+      index:
+        add_new: "Добавить новый тест"
+        title: "Список тестов"
+      new:
+        title: "Создание нового теста"
+    questions:
+      index:
+        title:    "Вопросы теста"
+        open:     "Открыть"
+        edit:     "Изменить"
+        delete:   "Удалить"
+        add_new:  "Добавить новый вопрос"
+      show:
+        title:    "Вопрос теста"
+        subtitle:  "Варианты ответа"
+        add_new:  "Добавить новый ответ"
+      new:
+        title: "Создание нового вопроса"
+      edit:
+        title: "Редактирование вопроса"     
+    answers:
+      show:
+        title:    "Текст ответа"
+        correct:  "Правильный ответ"
+      new:
+        title: "Новый ответ"
+    
+  errors:
+    messages:
+      not_saved:
+        # few: "%{resource}: сохранение не удалось из-за %{count} ошибок:"
+        # many: "%{resource}: сохранение не удалось из-за %{count} ошибок:"
+        one: "%{resource}: сохранение не удалось из-за ошибки:"
+        other: "%{resource}: сохранение не удалось из-за нескольких (%{count}) ошибок:"

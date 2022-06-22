@@ -17,11 +17,11 @@
         
         <div style="width: 50%; text-align: right; float: left;vertical-align:middle;">
           <% if user_signed_in? %>
-            Welcome, <b> <%= current_user.first_name %></b> Guru
-            <%= button_to "Выйти", destroy_user_session_path, method: :delete, style: "margin-right:25px; display:inline-block;" %>
+            <%= t('welcome') %>, <b> <%= current_user.first_name %></b> Guru
+            <%= button_to t('.logout'), destroy_user_session_path, method: :delete, style: "margin-right:25px; display:inline-block;" %>
           <% else %>
-            <%= button_to "Войти", new_user_session_path, method: :get, form: { style: 'display:inline-block;' }, style: "margin-top: 5px; margin-right:5px;" %>
-            <%= button_to "Зарегистрироваться",  new_user_registration_path, method: :get, form: { style: 'display:inline-block;' }, style: "margin-top: 5px; margin-right:25px; display:inline-block;" %>
+            <%= button_to t('.login'), new_user_session_path, method: :get, form: { style: 'display:inline-block;' }, style: "margin-top: 5px; margin-right:5px;" %>
+            <%= button_to t('.register'),  new_user_registration_path, method: :get, form: { style: 'display:inline-block;' }, style: "margin-top: 5px; margin-right:25px; display:inline-block;" %>
           <% end %>
         </div>
       </nav>
