@@ -1,4 +1,4 @@
-<h1>Вопрос теста "<%= @question.test.title %>"</h1>
+<h1><%= t('.title') %> "<%= @question.test.title %>"</h1>
   
 <%= render 'shared/errors', object: @question %>
 
@@ -6,11 +6,11 @@
   <%= render inline: @question.body %>
 </p>
 
-<h2>Варианты ответов:</h2>
+<h2><%= t('.subtitle') %></h2>
 
 <ol>
   <%= render @question.answers %>
 </ol>
 
-<%= link_to "Добавить ответ", new_admin_question_answer_path(@question) %> | 
-<%= link_to "К вопросам теста", admin_test_path(@question.test) %>
+<%= link_to t('.add_new'), new_admin_question_answer_path(@question) %> | 
+<%= link_to t('nav_back'), admin_test_path(@question.test) %>

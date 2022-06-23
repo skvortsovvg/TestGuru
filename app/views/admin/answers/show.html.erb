@@ -3,15 +3,15 @@
 </p>
 
 <p>
-  <b>Answer:</b>
+  <b> <%= t('helpers.lable.aswers.title') %></b>
   <%= @answer.body %>
 </p>
 
 <p>
-  <b>Correct:</b>
+  <b> <%= t('helpers.lable.aswers..correct') %></b>
   <%= @answer.correct %>
 </p>
 
 <div>
-  <%= link_to "Back", admin_question_path(@answer.question) %>
+  <%= link_to t('nav_back'), admin_question_path(@answer.question) %>
 </div>

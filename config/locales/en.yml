@@ -30,4 +30,78 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: "Hello"
+  nav_back: "Back"
+  admin_menu: "Admin Panel"
+  welcome: "Welcome"
+  
+  helpers:
+    submit:  
+      question:
+        create: "Create"
+        update: "Update"
+      test:
+        create: "Create"
+        update: "Update"
+
+  helpers:
+    select:
+      # Default value for :prompt => true in FormOptionsHelper
+      prompt: "Please select"
+
+    label:
+      test:
+        title:    "Title"
+        level:    "Level"
+        category: "Category"
+      question:
+        body:    "Question text"
+      answer:
+        body:    "Answer text"
+        correct:  "Correct"
+
+  layouts:
+    application:
+      logout: "Log out"
+      login: "Log in"
+      register: "Register" 
+
+  tests:
+    index:
+      title: "Tests list"
+    test:
+      start:  "Passing"
+
+  admin:
+    nav:
+      logout: "Logout"
+    tests:
+      test:
+        open:   "Open"
+        delete: "Delete"                
+      index:
+        add_new: "Add new test"
+        title: "Tests"
+      new:
+        title: "Adding new test"
+    questions:
+      index:
+        title:    "Questions for test "
+        open:     "Open"
+        edit:     "Edit"
+        delete:   "Delete"
+        add_new:  "Add new question"
+      show:
+        title:    "Question for test"
+        subtitle: "Possible answers"
+        add_new:  "Add new answer" 
+      new:
+        title: "Create new question"
+      edit:
+        title: "Edit question"     
+    answers:
+      show:
+        title:    "Answer text"
+        correct:  "Correct"
+      new:
+        title: "New answer"
