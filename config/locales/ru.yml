@@ -1,6 +1,8 @@
 
 ru:
   activerecord:
+    models:
+      question: "Вопрос"
     attributes:
       test:
         category: Категория
@@ -18,7 +20,9 @@ ru:
   nav_back: "Назад"
   admin_menu: "Панель администратора"
   welcome: "Добро пожаловать"
-  
+  en: "Английский"
+  ru: "Русский"
+
   helpers:
     select:
       prompt: "Сделайте выбор"
@@ -43,27 +47,32 @@ ru:
         body:    "Текст ответа"
         correct:  "Правильный ответ"
 
-  layouts:
-    application:
+  shared:
+    nav:
       logout: "Выйти"
       login: "Войти"
-      register: "Регистрация" 
+      register: "Регистрация"
+      admin: "Админпанель"
+      about: "О проекте"
+      f_pic: "https://img.icons8.com/emoji/48/000000/russia-emoji.png"
 
   tests:
     index:
       title:  "Список тестов"
+      add_new: "Добавить новый тест"
     test:
       start:  "Начать тестирование"
-
+      open:   "Открыть"
+      delete: "Удалить"      
+  results:
+    show:
+      title: "Прохождение теста"       
+  
   admin:
     nav:
       logout: "Выйти"
     tests:
-      test:
-        open:   "Открыть"
-        delete: "Удалить"             
       index:
-        add_new: "Добавить новый тест"
         title: "Список тестов"
       new:
         title: "Создание нового теста"

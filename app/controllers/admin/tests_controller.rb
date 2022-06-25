@@ -3,6 +3,7 @@ class Admin::TestsController < Admin::BaseController
 
   def index
     @tests = Test.all
+    render 'tests/index'
   end
 
   def show

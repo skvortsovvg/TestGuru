@@ -1,15 +1,24 @@
-<h1>Прохождение теста <%= @result.test.title %></h1>
-
-<p>
-  Вопрос № <%= "#{@result.answered_questions + 1} из #{@result.test.questions.count} . #{@result.current_question.body}"  %>
-</p>
+<h1 style="margin-bottom: 20px;"><%= t(".title") %> "<%= @result.test.title %>"</h1>
 
 <%= form_with url: result_path(@result), method: :put do |form| %>
-  <%= form.collection_radio_buttons :answer_id, @result.current_question.answers, :id, :body, include_hidden: false do |b| %>
-  <p>
-    <%= b.radio_button %>
-    <%= b.label %>
-  </p>
-  <% end %>
-  <%= link_to "К тестам", tests_path, style: "margin-right:20px" %><%= form.submit "Next >>" %>
+
+<div class="card">
+  <div class="card-header">
+    <%= "#{ Question.model_name.human} № #{@result.answered_questions + 1}. #{@result.current_question.body}"  %>
+  </div>
+  <div class="card-body">
+    <%= form.collection_radio_buttons :answer_id, @result.current_question.answers, :id, :body, include_hidden: false do |b| %>
+      <p>
+        <%= b.radio_button class: "form-check-input align-middle" %>
+        <%= b.label class: "form-check-label ms-2 align-middle" %>
+      </p>
+    <% end %>
+    <%= link_to "К тестам", tests_path, class: "btn btn-primary" %>
+    <%= form.submit "Next >>", class: "btn btn-success" %>    
+  </div>
+  <div class="card-footer text-muted">
+    <%= "#{@result.answered_questions + 1} из #{@result.test.questions.count}" %>
+  </div>
+</div>
+
 <% end %>

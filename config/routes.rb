@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|ru|/ do
     root "tests#index"
 
+    get :about, action: :about, controller: 'application'
+
     devise_for :users, path: :students, path_names: { sign_in: :login, sign_out: :logout }
+    # devise_for :users, controllers: { sessions: 'users/sessions' }      
 
     resources :tests, only: :index do
       member do
@@ -27,4 +30,5 @@ Rails.application.routes.draw do
       end
     end
   end
+
 end

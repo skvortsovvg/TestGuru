@@ -1,5 +1,14 @@
-<h1> <%= t '.title' %></h1>
+<div class="row m-3 justify-content-between">
+  <div class="col-md-auto">
+    <h1><%= t '.title' %></h1>
+  </div>
+  <% if current_user&.admin? %>
+    <div class="col-lg-auto">
+      <%= button_to t('.add_new'), new_admin_test_path, method: :get, class: "btn btn-primary mt-2" %>
+    </div>
+  <% end %>
+</div>
 
 <div id="tests">
-  <%= render @tests %>
+  <%= render partial: "tests/test", collection: @tests %>
 </div>

@@ -1,0 +1,50 @@
+ 
+<nav class="navbar navbar-expand-lg border" style="background-color: #e3f2fd;">
+  <div class="container-fluid mx-3">
+    <%= image_tag "test", size: "32", style: "margin-right: 5px" %> 
+    <a class="navbar-brand pe-3 border-end border-primary border-3" href=<%= root_path %>>TestGuru</a>
+    <div class="collapse navbar-collapse">
+       <ul class="nav col-12 col-lg-auto justify-content-center my-md-0 text-small">      
+          <% if current_user&.admin? %>
+          <li>
+            <a class="nav-link" href=<%= admin_tests_path %>>
+              <%= image_tag "gear", class: "bi d-block mx-auto mb-1", size: 24 %>
+              <%= t(".admin") %>
+            </a>
+          </li>
+          <% end %>
+          <li>
+            <a class="nav-link" href=<%= about_path %>>
+              <%= image_tag "info", class: "bi d-block mx-auto mb-1", size: 24%>
+              <%= t(".about") %>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  <div class="flex-shrink-0 pe-3 dropdown">
+    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src=<%= t('.f_pic') %> width="32" height="32" class="rounded-circle">
+      <%= t(I18n.locale) %>
+    </a>
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+      <% I18n.available_locales.each do |locale| %>
+        <li>
+          <a class="dropdown-item" style="display:inline-block;" href=<%= url_for(locale: locale) %>><%= t(locale) %> </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+  <ul class="nav navbar-nav">
+    <% if current_user %>
+      <li><%= t('welcome') %>, <b><%= current_user.first_name %></b> Guru |</li>
+      <li><%= button_to t('.logout'), destroy_user_session_path, method: :delete, class: "btn btn-link", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: .85rem;"%></li>      
+    <% else %>
+      <li><%= button_to t('.login'), new_user_session_path, method: :get, class: "btn btn-primary me-2" %></li>
+      <li><%= button_to t('.register'),  new_user_registration_path, method: :get, class: "btn btn-primary" %></li>
+    <% end %>
+  </ul>        
+  </div>
+</nav>

@@ -1,36 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= favicon_link_tag "t.svg" %>
     <title>TestGuru</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %> -->
+        
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= javascript_importmap_tags %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
-      <nav class="navbar" style="height: 20px; margin-top: 5px; margin-bottom: 5px; margin-right: 25px;">
-        <div style="width: 50%; margin-top: 7px; text-align: left; float: left; vertical-align:middle;">
-          <b><%= link_to "TestGuru", root_path, style: "margin-left:25px" %></b>
-        </div>
-        
-        <div style="width: 50%; text-align: right; float: left;vertical-align:middle;">
-          <% if user_signed_in? %>
-            <%= t('welcome') %>, <b> <%= current_user.first_name %></b> Guru
-            <%= button_to t('.logout'), destroy_user_session_path, method: :delete, style: "margin-right:25px; display:inline-block;" %>
-          <% else %>
-            <%= button_to t('.login'), new_user_session_path, method: :get, form: { style: 'display:inline-block;' }, style: "margin-top: 5px; margin-right:5px;" %>
-            <%= button_to t('.register'),  new_user_registration_path, method: :get, form: { style: 'display:inline-block;' }, style: "margin-top: 5px; margin-right:25px; display:inline-block;" %>
-          <% end %>
-        </div>
-      </nav>
+
+    <%= render 'shared/nav' %>
     
-    <br><hr/>
-    
+  
     <%= flash_msg %>
 
-    <%= yield %>
+    <div class="m-3">
+      <%= yield %>
+    </div>
     
     <%= render 'shared/footer' %>
   </body>
