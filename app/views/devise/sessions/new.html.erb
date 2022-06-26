@@ -1,0 +1,32 @@
+<!-- <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+
+<main class="form-signin col-md-3">
+<h1 class="h3 mb-3 fw-normal"><%= t('.sign_in') %></h1>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin" }) do |f| %>
+  <div class="form-floating">
+    <%= f.email_field :email, class: "form-control", id: "floatingInput", placeholder: "name@example.com", autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mt-1">
+    <%= f.password_field :password, type: "password", class: "form-control", id: "floatingPassword", placeholder: "Password", autocomplete: "current-password" %>
+    <%= f.label :password, for: "floatingPassword"%>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="checkbox text-center mb-3">
+      <%= f.label :remember_me %>
+      <%= f.check_box :remember_me, type: "checkbox" %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.submit t('.sign_in'), class: "w-100 btn btn-lg btn-primary" %>
+  </div>
+<% end %>
+
+</main>
+
+
+<%= render "devise/shared/links" %>

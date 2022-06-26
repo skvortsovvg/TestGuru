@@ -1,13 +1,15 @@
- <div id="<%= dom_id test %>">
-  <p>
-    <strong><%= "#{test.title} (#{pluralize(test.questions.count, "question" )})" %></strong><br>
-    <%= "#{test.category.title}, #{test.level_represent}" %><br>
-    <%= "Автор: #{test.author.first_name} #{test.author.last_name}" %>
-    
-    <%= button_to t('.start'), start_test_path(test), method: :post, form: {style: 'display:inline-block;'} %>
-    <hr/>
-    </p>
-
-  </p>
-
+<div class="card mb-3" id="<%= dom_id test %>">
+  <h5 class="card-header"><%= "#{test.title} (#{pluralize(test.questions.count, "question" )})" %></h5>
+  <div class="card-body">
+    <p class="card-text"><b><%= "#{test.category.title}, #{test.level_represent}" %></b></p>
+    <p class="card-text"> <%= "Автор: #{test.author.first_name} #{test.author.last_name}" %></p>
+    <% if request.path.include?("admin") %>
+      <div class="d-grid gap-2 d-md-block">
+        <%= button_tag t('.open'),  onclick: "location.href = '#{admin_test_path(test)}'", class: "btn btn-primary", type: "button" %>
+        <%= button_to t('.delete'), admin_test_path(test), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' },  form: {style: 'display:inline-block;'} %>
+      </div>
+    <% else %>
+      <%= button_to t('.start'), start_test_path(test), method: :post, class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>

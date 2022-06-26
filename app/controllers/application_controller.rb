@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   after_action  :hello, only: :create, if: Proc.new { is_a?(::Devise::SessionsController) }
   before_action :switch_locale
 
+  def about
+  end
+
   protected
 
   def switch_locale
@@ -11,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def params_locale
-    params[:locale] || I18n.default_locale
+    (params[:locale] if !params[:locale]&.empty?) || I18n.default_locale
   end
 
   def default_url_options
@@ -23,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def hello
-    flash[:alert] = "#{t('hello')}, #{current_user.first_name.capitalize}!"
+    flash[:primary] = "#{t('hello')}, #{current_user.first_name.capitalize}!"
   end
 
   def configure_permitted_parameters

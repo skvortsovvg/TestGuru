@@ -34,6 +34,8 @@ en:
   nav_back: "Back"
   admin_menu: "Admin Panel"
   welcome: "Welcome"
+  en: "English"
+  ru: "Russian"
   
   helpers:
     submit:  
@@ -60,17 +62,24 @@ en:
         body:    "Answer text"
         correct:  "Correct"
 
-  layouts:
-    application:
+  shared:
+    nav:
       logout: "Log out"
       login: "Log in"
       register: "Register" 
+      admin: "Administration"
+      about: "About"
+      f_pic: "https://img.icons8.com/emoji/48/000000/united-kingdom-emoji.png"
 
   tests:
     index:
       title: "Tests list"
     test:
       start:  "Passing"
+  results:
+    show:
+      title: "Passing test"
+      qst: "Q"       
 
   admin:
     nav:

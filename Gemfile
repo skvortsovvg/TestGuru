@@ -39,6 +39,9 @@ gem "jbuilder"
 gem 'devise'
 gem 'devise-i18n'
 
+gem 'bootstrap'
+gem 'jquery-rails'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo'
 gem 'tzinfo-data'
