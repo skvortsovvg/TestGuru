@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     end
 
     namespace :admin do
+      resources :gists
       resources :tests do
         resources :questions, shallow: true do
           resources :answers, shallow: true
@@ -26,9 +27,21 @@ Rails.application.routes.draw do
     # GET /results/1/finish
     resources :results, only: %i[show update] do
       member do
-        get :finish
+        get   :finish
+        post  :gist, as: 'new_gist'
       end
     end
   end
 
 end
+
+# client = Octokit::Client.new(:access_token => "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")
+# client.post('/gists', {
+#   description: 'Example of a gist',
+#   'public': false,
+#   files: {
+#   'README.md': {
+#     content: 'Hello World'
+#     } 
+#   }
+# })
