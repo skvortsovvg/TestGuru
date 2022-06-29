@@ -8,8 +8,7 @@ Rails.application.routes.draw do
     get :about, action: :about, controller: 'application'
 
     devise_for :users, path: :students, path_names: { sign_in: :login, sign_out: :logout }
-    # devise_for :users, controllers: { sessions: 'users/sessions' }      
-
+   
     resources :tests, only: :index do
       member do
         post :start
@@ -35,14 +34,3 @@ Rails.application.routes.draw do
   end
 
 end
-
-# client = Octokit::Client.new(:access_token => "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")
-# client.post('/gists', {
-#   description: 'Example of a gist',
-#   'public': false,
-#   files: {
-#   'README.md': {
-#     content: 'Hello World'
-#     } 
-#   }
-# })
