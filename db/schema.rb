@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_27_162011) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_28_142027) do
   create_table "answers", force: :cascade do |t|
     t.string "body", null: false
     t.boolean "correct", default: false, null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_162011) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "gists", force: :cascade do |t|
+  create_table "gists", id: { type: :string, limit: 50 }, force: :cascade do |t|
     t.string "description"
     t.string "content"
     t.boolean "public"
@@ -34,8 +34,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_162011) do
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_git_hub_gists_on_author_id"
-    t.index ["question_id"], name: "index_git_hub_gists_on_question_id"
+    t.index ["author_id"], name: "index_gists_on_author_id"
+    t.index ["question_id", "author_id"], name: "index_gists_on_question_id_and_author_id", unique: true
+    t.index ["question_id"], name: "index_gists_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -91,8 +92,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_162011) do
   end
 
   add_foreign_key "answers", "questions"
-  add_foreign_key "git_hub_gists", "questions"
-  add_foreign_key "git_hub_gists", "users", column: "author_id"
+  add_foreign_key "gists", "questions"
+  add_foreign_key "gists", "users", column: "author_id"
   add_foreign_key "questions", "tests"
   add_foreign_key "results", "questions", column: "current_question_id"
   add_foreign_key "results", "tests"

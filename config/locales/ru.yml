@@ -23,6 +23,10 @@ ru:
   en: "Английский"
   ru: "Русский"
 
+  new_gist: "Создан новый gist"
+  gist_discription: "Комментарии к вопросу [TestGuru]"
+  gist_error: "Возникли проблемы при запросе на GiHub"
+
   helpers:
     select:
       prompt: "Сделайте выбор"
@@ -36,6 +40,7 @@ ru:
       answer:
         create: "Создать ответ"
         update: "Сохранить изменения"
+      
     label:
       test:
         title:    "Наименование теста"
@@ -65,8 +70,13 @@ ru:
       open:   "Открыть"
       delete: "Удалить"      
   results:
+    update:
+      alert_make_choise: "Ответ не принят: выберите вариант ответа"        
     show:
-      title: "Прохождение теста"       
+      title: "Прохождение теста"
+      create_new_gist: "Создать gist на GitHub"
+      to_tests: "К списку тестов"
+      next: "Далее >>"
   
   admin:
     nav:

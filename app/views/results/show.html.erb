@@ -1,8 +1,9 @@
 <h1 style="margin-bottom: 20px;"><%= t(".title") %> "<%= @result.test.title %>"</h1>
 
 <%= form_with url: result_path(@result), method: :put do |form| %>
+<%= render "shared/errors", object: @result %>
 
-<div class="card">
+  <div class="card">
   <div class="card-header">
     <%= "#{ Question.model_name.human} № #{@result.answered_questions + 1}. #{@result.current_question.body}"  %>
   </div>
@@ -13,12 +14,16 @@
         <%= b.label class: "form-check-label ms-2 align-middle" %>
       </p>
     <% end %>
-    <%= link_to "К тестам", tests_path, class: "btn btn-primary" %>
-    <%= link_to "Gist", new_gist_result_path(@result), method: :post, class: "btn btn-primary" %>
-    <%= form.submit "Next >>", class: "btn btn-success" %>    
+    <%= link_to t('.to_tests'), tests_path, class: "btn btn-primary" %>
+    <%= form.submit t('.next'), class: "btn btn-success" %>    
   </div>
   <div class="card-footer text-muted">
-    <%= "#{@result.answered_questions + 1} из #{@result.test.questions.count}" %>
+    <%= "#{@result.answered_questions + 1} из #{@result.test.questions.count}" %> | 
+    <% if @gist %> 
+      <%= link_to "Gist: #{@gist.id}", "https://gist.github.com/" + @gist.id %>
+    <% else %>
+      <%= link_to t('.create_new_gist'), new_gist_result_path(@result), method: :post %>
+    <% end %>
   </div>
 </div>
 

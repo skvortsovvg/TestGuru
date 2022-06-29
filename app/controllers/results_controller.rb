@@ -1,42 +1,38 @@
 class ResultsController < ApplicationController
   # before_action :authenticate_user!
   before_action :set_result
+  before_action :set_gist, only: [:show, :gist]
 
   def show; end
 
   def finish; end
 
   def update
-    return if params[:answer_id].blank?
-
-    @result.accept!(params[:answer_id])
-    if @result.completed?
-      redirect_to finish_result_path(@result)
+    if params[:answer_id].blank?
+      redirect_to(@result, alert: t('.alert_make_choise')) 
     else
-      render :show
+      @result.accept!(params[:answer_id])
+      if @result.completed?
+        redirect_to finish_result_path(@result)
+      else
+        render :show
+      end
     end
   end
 
   def gist
-    gist = Gist.new(
-      question: @result.current_question, 
-      author: @result.user,
-      id: "brodi",
-      content: @result.current_question.body + "\nШо делать?",
-      description: "Такая хуйня",
-      public: true)
-
-    if gist.save
-      flash[:success] = "Всё оке"
-      render :show
-    else 
-      redirect_to @result
-    end
+    return if @gist
+    answer = GistQuestionService.new.create_gist(@result)
+    flash[answer[:key]] = answer[:value]
+    redirect_to @result
   end
 
   private
 
   def set_result
     @result = Result.find(params[:id])
+  end
+  def set_gist
+    @gist = Gist.find_by(question: @result.current_question, author: current_user)
   end
 end
