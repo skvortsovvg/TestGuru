@@ -37,10 +37,6 @@ en:
   en: "English"
   ru: "Russian"
   
-  new_gist: "New gist created"
-  gist_discription: "Discussion question [TestGuru]"
-  gist_error: "Having some problems requesting on GitHub"
-
   helpers:
     submit:  
       question:
@@ -88,6 +84,11 @@ en:
       create_new_gist: "Create new gist on GitHub"               
       to_tests: "To tests list"
       next: "Next >>"
+    gist:
+      new_gist: "New gist created"
+      gist_discription: "Discussion question [TestGuru]"
+      gist_error: "Having some problems requesting on GitHub"
+
   
   admin:
     nav:

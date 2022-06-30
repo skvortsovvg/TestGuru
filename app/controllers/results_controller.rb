@@ -22,9 +22,22 @@ class ResultsController < ApplicationController
 
   def gist
     return if @gist
-    answer = GistQuestionService.new.create_gist(@result)
-    flash[answer[:key]] = answer[:value]
+
+    gist = Gist.new(
+      question: @result.current_question, 
+      author: @result.user,
+      content: "#{@result.current_question.body}\n" + @result.current_question.answers.pluck(:body).join("\n"),
+      description: t('.gist_discription'),
+      public: true)
+
+    if gist.save
+      flash[:success] = "#{t('.new_gist')}:  #{ view_context.link_to(gist.id, "https://gist.github.com/#{gist.id}", target: '_blank') }" 
+    else 
+      flash[:alert] = gist.errors.full_messages.join("\n") 
+    end
+
     redirect_to @result
+
   end
 
   private

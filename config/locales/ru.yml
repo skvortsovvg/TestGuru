@@ -23,10 +23,6 @@ ru:
   en: "Английский"
   ru: "Русский"
 
-  new_gist: "Создан новый gist"
-  gist_discription: "Комментарии к вопросу [TestGuru]"
-  gist_error: "Возникли проблемы при запросе на GiHub"
-
   helpers:
     select:
       prompt: "Сделайте выбор"
@@ -77,6 +73,11 @@ ru:
       create_new_gist: "Создать gist на GitHub"
       to_tests: "К списку тестов"
       next: "Далее >>"
+    gist:
+      new_gist: "Создан новый gist"
+      gist_discription: "Комментарии к вопросу [TestGuru]"
+      gist_error: "Возникли проблемы при запросе на GiHub"
+
   
   admin:
     nav:
