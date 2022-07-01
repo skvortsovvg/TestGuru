@@ -30,12 +30,11 @@ class ResultsController < ApplicationController
       description: t('.gist_discription'),
       public: true)
 
-    if gist.save
-      flash[:success] = "#{t('.new_gist')}:  #{ view_context.link_to(gist.id, "https://gist.github.com/#{gist.id}", target: '_blank') }" 
-    else 
+    if gist.errors.any? || !gist.save
       flash[:alert] = gist.errors.full_messages.join("\n") 
+    else 
+      flash[:success] = "#{t('.new_gist')}:  #{ view_context.link_to(gist.gist_id, "https://gist.github.com/#{gist.gist_id}", target: '_blank') }" 
     end
-
     redirect_to @result
 
   end

@@ -20,7 +20,7 @@
   <div class="card-footer text-muted">
     <%= "#{@result.answered_questions + 1} из #{@result.test.questions.count}" %> | 
     <% if @gist %> 
-      <%= link_to "Gist: #{@gist.id}", "https://gist.github.com/" + @gist.id %>
+      <%= link_to "Gist: #{@gist.gist_id}", "https://gist.github.com/" + @gist.gist_id %>
     <% else %>
       <%= link_to t('.create_new_gist'), new_gist_result_path(@result), method: :post %>
     <% end %>
