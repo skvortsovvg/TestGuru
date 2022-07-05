@@ -1,11 +1,11 @@
 <h1>Gists</h1>
 
-<table class="table">
+<table class="table" id="gists_table">
   <thead>
     <tr>
       <th scope="col">Date</th>
-      <th scope="col" >Question</th>
-      <th scope="col">GitLink</th>
+      <th scope="col" class="sorted" id="sortBy">Question</th>
+      <th scope="col" id="sortBy">GitLink</th>
       <th scope="col">Author</th>
     </tr>
   </thead>
@@ -13,3 +13,19 @@
       <%= render @gists %>
   </tbody>
 </table>
+
+<script type="text/javascript">  
+  document.getElementById('sortBy').addEventListener('click', () => {
+
+    const table = document.getElementById('gists_table')
+    
+    table.order = -table.order || 1
+    event.target.className  = table.order === 1 ? 'sorted_desc' : 'sorted_asc'
+    
+    let sortedRows = Array.from(table.rows)
+      .slice(1)
+      .sort((rowA, rowB) => rowA.cells[1].innerText > rowB.cells[1].innerText ? table.order : -table.order);
+
+      table.tBodies[0].append(...sortedRows)
+  })
+</script>
