@@ -1,39 +1,66 @@
 <h2> <%= t('.sign_up') %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<main class="form-signin">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin" } ) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "name" %>
-  </div>
+    <div class="form-floating col-md-3">
+      <%= f.text_field :first_name, class: "form-control", id: "name", autofocus: true, autocomplete: "name" %>
+      <%= f.label :first_name, for: "name" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "name" %>
-  </div>
+    <div class="form-floating col-md-3 mt-2">
+      <%= f.text_field :last_name, class: "form-control", id: "surname", autofocus: true, autocomplete: "surname" %>
+      <%= f.label :last_name, for: "surname" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="form-floating col-md-3 mt-2">
+      <%= f.email_field :email, class: "form-control", id: "email", autofocus: true, autocomplete: "email" %>
+      <%= f.label :email, for: "email"  %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="d-flex mt-2">
+      <div class="form-floating col-md-3">
+        <%= f.password_field :password, class: "form-control", id: "password", autocomplete: "new-password" %>
+        <%= f.label :password, for: "password" %>
+      </div>
+      <small class="mx-3 align-self-center", id="password_msg"></small>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="d-flex mt-2 mb-3">
+      <div class="form-floating col-md-3">
+        <%= f.password_field :password_confirmation, class: "form-control", id: "confirmation", autocomplete: "new-password" %>
+        <%= f.label :password_confirmation, for: "confirmation" %>
+      </div>
+      <small class="mx-3 align-self-center", id="confirmation_msg"></small>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit t('.sign_up'), class: "col-md-3 mb-2 btn btn-lg btn-primary" %>
+    </div>
+  <% end %>
+</main>
 
 <%= render "devise/shared/links" %>
+
+<script type="text/javascript">
+  const set_error = ( {target} ) => {
+    const match = (target.value === document.querySelector('#password').value)
+
+    target.classList.toggle("match-error", !match)
+    document.querySelector('#confirmation_msg').classList.toggle("match-text-error", !match)
+    document.querySelector('#confirmation_msg').classList.toggle("empty-text-error", !target.value)
+    document.querySelector('#confirmation_msg').classList.toggle("no_errors", match && target.value)
+    document.querySelector('#password_msg').classList.toggle("no_errors", match && target.value)         
+  }
+
+
+  document.querySelector('#confirmation').oninput = function() {
+    setTimeout(set_error, 200, event)   
+  }
+
+  document.querySelector('#password').oninput = function() {
+    setTimeout(set_error, 200, { target: document.querySelector('#confirmation') })
+  }
+
+</script>

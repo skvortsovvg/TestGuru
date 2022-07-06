@@ -1,0 +1,39 @@
+.table th {
+    cursor: pointer;
+}
+
+th.sorted_desc::after {
+  content: "▼"
+}
+
+th.sorted_asc::after {
+  content: "▲"
+}
+
+.empty-value {
+  border: red 1px solid;
+}
+
+.match-error {
+  border: red 1px solid;
+  text-decoration: underline; /* Подчёркивание */
+  text-decoration-style: wavy; /* Волнистая линия */  
+  text-decoration-color: red; /* Цвет подчёркивания */
+  text-decoration-thickness: 0.5px;
+}
+
+.match-text-error::after {
+  content: "Пароль и подтверждение не совпадают!";
+  color: red;
+}
+
+.empty-text-error::after {
+  content: "Пустое подтверждение пароля!";
+  color: red;
+}
+
+.no_errors::after {
+  content: "✓";
+  color: green;
+  font-weight:bold;
+}
