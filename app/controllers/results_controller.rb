@@ -15,7 +15,7 @@ class ResultsController < ApplicationController
       if @result.completed?
         redirect_to finish_result_path(@result)
       else
-        render :show
+        redirect_to result_path(@result)
       end
     end
   end

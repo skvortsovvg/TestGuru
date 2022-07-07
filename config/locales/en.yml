@@ -31,7 +31,7 @@
 
 en:
   hello: "Hello"
-  nav_back: "Back"
+  nav_back: "<< Back"
   admin_menu: "Admin Panel"
   welcome: "Welcome"
   en: "English"
@@ -76,6 +76,10 @@ en:
       title: "Tests list"
     test:
       start:  "Passing"
+      open:   "Open"
+      delete: "Delete"
+      edit:   "Edit"
+         
   results:
     update:
       alert_make_choise: "Answer not accepted: select an answer"
@@ -94,9 +98,13 @@ en:
     nav:
       logout: "Logout"
     tests:
+      new:
+        title: "New test"
+      edit:
+        title: "Edit test"
       test:
-        open:   "Open"
-        delete: "Delete"                
+        create: "Create"
+        update: "Update test"                
       index:
         add_new: "Add new test"
         title: "Tests"
