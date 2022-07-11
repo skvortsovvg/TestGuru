@@ -1,9 +1,14 @@
-<h1 style="margin-bottom: 20px;"><%= t(".title") %> "<%= @result.test.title %>"</h1>
+<h1 style="margin-bottom: 10px;"><%= t(".title") %> "<%= @result.test.title %>"</h1>
+
+<div class="progress mb-2">
+  <% prev_value = @result.answered_questions > 0 ? (@result.answered_questions-1).to_f/@result.test.questions.count*100 : 0 %>
+  <div class="progress-bar" role="progressbar" style="width: <%= "#{prev_value}%" %>" aria-valuemin="0" aria-valuemax="100"><%= "#{'%.2f' % prev_value }%" %></div>
+</div>
 
 <%= form_with url: result_path(@result), method: :put do |form| %>
 <%= render "shared/errors", object: @result %>
 
-  <div class="card">
+<div class="card" data-current-qst-number="<%= @result.answered_questions %>" data-qst-count="<%= @result.test.questions.count %>">
   <div class="card-header">
     <%= "#{ Question.model_name.human} № #{@result.answered_questions + 1}. #{@result.current_question.body}"  %>
   </div>
@@ -26,5 +31,4 @@
     <% end %>
   </div>
 </div>
-
 <% end %>

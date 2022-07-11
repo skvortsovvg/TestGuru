@@ -1,9 +1,20 @@
 class Admin::TestsController < Admin::BaseController
-  before_action :set_test, only: %i[show start destroy]
+  before_action :set_test, only: %i[edit update show start destroy]
 
   def index
     @tests = Test.all
     render 'tests/index'
+  end
+
+  def edit
+  end
+
+  def update
+    if @test.update(test_params)
+      redirect_to admin_tests_path, notice: "Success!"
+    else
+      render :edit
+    end
   end
 
   def show

@@ -17,7 +17,7 @@ ru:
               blank: "не заполнено"
 
   hello: "Привет"
-  nav_back: "Назад"
+  nav_back: "<< Назад"
   admin_menu: "Панель администратора"
   welcome: "Добро пожаловать"
   en: "Английский"
@@ -64,7 +64,9 @@ ru:
     test:
       start:  "Начать тестирование"
       open:   "Открыть"
-      delete: "Удалить"      
+      delete: "Удалить"
+      edit: "Редактировать"   
+
   results:
     update:
       alert_make_choise: "Ответ не принят: выберите вариант ответа"        
@@ -87,6 +89,12 @@ ru:
         title: "Список тестов"
       new:
         title: "Создание нового теста"
+      edit:
+        title: "Редактирование теста"
+      test:
+        create: "Создать"
+        update: "Сохранить"   
+
     questions:
       index:
         title:    "Вопросы теста"

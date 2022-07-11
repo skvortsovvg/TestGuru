@@ -2,3 +2,4 @@
 
 pin "application", preload: false
 pin "myjs"
+

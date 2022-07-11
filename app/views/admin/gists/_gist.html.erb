@@ -1,6 +1,6 @@
 <tr>
   <th scope="row"><%= gist.created_at.strftime('%F %T') %></th>
-  <td> <%=link_to "#{gist.content.first(25)}...", admin_question_path(gist.question), style: 'white-space:nowrap;overflow: hidden; text-overflow: ellipsis;' %></td>
+  <td> <%=link_to gist.content, admin_question_path(gist.question), class: "d-inline-block text-truncate", style: "max-width: 250px;" %></td>
   <td><%= link_to gist.gist_id, "https://gist.github.com/" + gist.gist_id, overflow: 'hidden', target: '_blank'  %></td>
   <td><%= link_to gist.author.email, "#" %></td>
 </tr>
