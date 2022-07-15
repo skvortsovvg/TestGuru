@@ -8,20 +8,20 @@
         <% if current_user&.admin? %>
         <li class="nav-item">
           <a class="nav-link text-primary" href=<%= admin_tests_path %>>
-            <%= image_tag "gear", class: "bi d-block mx-auto mb-1", size: 24 %>
+            <%= image_tag "gear.svg", class: "bi d-block mx-auto mb-1", size: 24 %>
             <%= t(".admin") %>
           </a>
         </li>
         <li class="nav-item mx-2">
           <a class="nav-link text-primary" href=<%= admin_gists_path %>>
-            <%= image_tag "list", class: "bi d-block mx-auto mb-1", size: 24 %>
+            <%= image_tag "list.svg", class: "bi d-block mx-auto mb-1", size: 24 %>
             Gists
           </a>
         </li>
         <% end %>
         <li class="nav-item">
           <a class="nav-link text-primary" href=<%= about_path %>>
-            <%= image_tag "info", class: "bi d-block mx-auto mb-1", size: 24%>
+            <%= image_tag "info.svg", class: "bi d-block mx-auto mb-1", size: 24%>
             <%= t(".about") %>
           </a>
         </li>
