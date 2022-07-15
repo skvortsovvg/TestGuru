@@ -12,8 +12,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
-  password: qwerty
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 production:
@@ -23,7 +21,8 @@ production:
 development:
   <<: *default
   database: db/myapp_development
-  # database: db/development.sqlite3
+  username: postgres
+  password: qwerty
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -31,4 +30,6 @@ development:
 test:
   <<: *default
   database: db/myapp_test
+  username: postgres
+  password: qwerty
   # database: db/test.sqlite3
