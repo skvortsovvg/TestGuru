@@ -7,7 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Пользователи
-User.create([{ first_name: "Vladimir", email: "Vladimir@test.ru", password: "Test1234" }, { first_name: "Dmitry", email: "Dmitry@test.ru", password: "Test1234" }, { first_name: "Alexander", email: "Alexander@test.ru", password: "Test1234" }])
+User.create([ { first_name: "Vladimir", email: "Vladimir@test.ru", password: "Test1234" }, 
+              { first_name: "Dmitry", email: "Dmitry@test.ru", password: "Test1234" }, 
+              { first_name: "Alexander", email: "Alexander@test.ru", password: "Test1234" }, 
+              { first_name: "Admin", email: "admin@test.ru", password: "Admin123", type: "Admin"}])
 
 firstUserID = User.first.id
 
@@ -88,9 +91,9 @@ Result.create(user_id: firstUserID, test_id: new_test.id)
 new_test = Test.create(title: "JavaScript", level: 2, category_id: category.id, author_id: firstUserID)
 
 question = Question.create(body: "В чем отличие между локальной и глобальной переменной?", test_id: new_test.id)
-Answer.create(body: "Глобальные можно переопределять, локальные нельзя", correct: true, question_id: question.id)
+Answer.create(body: "Глобальные можно переопределять, локальные нельзя", question_id: question.id)
 Answer.create(body: "Локальные можно переопределять, глобальные нельзя", question_id: question.id)
-Answer.create(body: "Глобальные видны повсюду, локальные только в функциях", question_id: question.id)
+Answer.create(body: "Глобальные видны повсюду, локальные только в функциях", correct: true, question_id: question.id)
 Answer.create(body: "Локальные видны повсюду, глобальные только в функциях", question_id: question.id)
 
 question = Question.create(body: "В чем разница между confirm и prompt?", test_id: new_test.id)
@@ -100,9 +103,9 @@ Answer.create(body: "prompt вызывает диалоговое окно с п
 
 question = Question.create(body: "Где верно указан вывод данных?", test_id: new_test.id)
 Answer.create(body: 'print(Hello);', question_id: question.id)
-Answer.create(body: 'console.log("Hello");', question_id: question.id)
+Answer.create(body: 'console.log("Hello");', correct: true, question_id: question.id)
 Answer.create(body: 'documentWrite("Hello");', question_id: question.id)
-Answer.create(body: 'prompt("Hello")', correct: true, question_id: question.id)
+Answer.create(body: 'prompt("Hello")', question_id: question.id)
 
 question = Question.create(body: "Где верно указано имя переменной?", test_id: new_test.id)
 Answer.create(body: "var num", question_id: question.id)
@@ -111,8 +114,8 @@ Answer.create(body: "var 2num;", question_id: question.id)
 Answer.create(body: "var num_1;", question_id: question.id)
 
 question = Question.create(body: "Где верно указан запуск всплывающего окна?", test_id: new_test.id)
-Answer.create(body: 'new alert ("Hi")', correct: true, question_id: question.id)
-Answer.create(body: 'alert ("Hi")', question_id: question.id)
+Answer.create(body: 'new alert ("Hi")', question_id: question.id)
+Answer.create(body: 'alert ("Hi")', correct: true, question_id: question.id)
 Answer.create(body: 'info ("Hi")', question_id: question.id)
 Answer.create(body: 'Нет верных вариантов', question_id: question.id)
 
