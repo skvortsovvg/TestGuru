@@ -1,4 +1,3 @@
-
 ru:
   activerecord:
     models:
@@ -56,6 +55,7 @@ ru:
       register: "Регистрация"
       admin: "Админпанель"
       about: "О проекте"
+      contact: "Контакты"
       f_pic: "https://img.icons8.com/emoji/48/000000/russia-emoji.png"
 
   tests:
@@ -81,7 +81,11 @@ ru:
       gist_discription: "Комментарии к вопросу [TestGuru]"
       gist_error: "Возникли проблемы при запросе на GiHub"
 
-  
+  application:
+    contact:
+      send_contact: "Отправить сообщение"
+      message: "Cообщение"
+
   admin:
     nav:
       logout: "Выйти"

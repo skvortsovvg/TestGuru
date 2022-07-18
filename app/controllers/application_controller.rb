@@ -7,6 +7,16 @@ class ApplicationController < ActionController::Base
   def about
   end
 
+  def contact
+  end
+
+  def send_contact
+      ApplicationMailer.new.mail(to: params[:email], 
+                            subject: "Обращение пользователя TestGuru",
+                            body: params[:message]).deliver!
+      redirect_to root_path, notice: "Ваше сообщение отправлено!"
+  end
+
   protected
 
   def switch_locale

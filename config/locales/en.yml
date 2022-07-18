@@ -70,6 +70,7 @@ en:
       register: "Register" 
       admin: "Administration"
       about: "About"
+      contact: "Feedback"
       f_pic: "https://img.icons8.com/emoji/48/000000/united-kingdom-emoji.png"
 
   tests:
@@ -94,7 +95,11 @@ en:
       gist_discription: "Discussion question [TestGuru]"
       gist_error: "Having some problems requesting on GitHub"
 
-  
+  application:
+    contact:
+      send_contact: "Send message"
+      message: "Message"
+
   admin:
     nav:
       logout: "Logout"
