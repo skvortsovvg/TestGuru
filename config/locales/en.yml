@@ -36,7 +36,8 @@ en:
   welcome: "Welcome"
   en: "English"
   ru: "Russian"
-  
+  password_reg: Password (6 signs min)
+
   helpers:
     submit:  
       question:

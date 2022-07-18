@@ -32,4 +32,4 @@ test:
   database: db/myapp_test
   username: postgres
   password: qwerty
-  # database: db/test.sqlite3
+# database: db/test.sqlite3

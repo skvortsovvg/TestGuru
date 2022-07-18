@@ -22,6 +22,7 @@ ru:
   welcome: "Добро пожаловать"
   en: "Английский"
   ru: "Русский"
+  password_reg: Пароль (6 символов минимум)
 
   helpers:
     select:
