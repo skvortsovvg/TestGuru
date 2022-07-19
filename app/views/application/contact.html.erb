@@ -3,7 +3,7 @@
 <%= form_with url: contact_path do |form| %>
   <div class="container-fluid m-0 col-lg-6">
     <div class="form-floating my-3">
-      <%= form.text_field :email, class: "form-control", id: :email, required: true, type: "email" %>
+      <%= form.text_field :email, class: "form-control", id: :email, required: true, disabled: true, value: current_user.email, type: "email" %>
       <%= form.label "Email", for: :email %>
     </div>
     <div class="form-floating my-3">

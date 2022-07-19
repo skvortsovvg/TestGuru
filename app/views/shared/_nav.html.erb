@@ -19,12 +19,14 @@
           </a>
         </li>
         <% end %>
+        <% if current_user %>
         <li class="nav-item">
-          <a class="nav-link text-primary" href=<%= contact_path %>>
+          <a class="nav-link text-primary" href=<%= new_contact_path %>>
             <%= image_tag "at-solid.svg", class: "bi d-block mx-auto mb-1", size: 24%>
             <%= t(".contact") %>
           </a>
         </li>
+        <% end %>
         <li class="nav-item">
           <a class="nav-link text-primary" href=<%= about_path %>>
             <%= image_tag "info.svg", class: "bi d-block mx-auto mb-1", size: 24%>
