@@ -11,5 +11,6 @@ class ContactController < ApplicationController
       redirect_to root_path, notice: "Ваше сообщение отправлено!"
     else
       redirect_to :new,  alert: 'Пустое сообщение, напишите что-нибудь'
+    end
   end
 end
