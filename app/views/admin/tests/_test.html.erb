@@ -17,7 +17,15 @@
       <%= form.select :level, (0..10).to_a, {}, class: "form-select", id: "level_selector" %>
       <%= form.label :level, for: "level_selector" %>
     </div>
+
+    <% if !test.new_record? %>
+     <div class="form-check mt-3 ms-2 align-self-center col-lg-2">
+        <%= form.check_box :is_active, class: "form-check-input", id: "is_active_check" %>
+        <%= form.label "Активный", class: "form-check-label", for: "is_active_check" %>
+      </div>
+    <% end %>
   </div>
+
 
   <div>
     <%= form.submit test.new_record? ? t('.create') : t('.update'), class: "btn btn-primary col-lg-4 mt-3" %>

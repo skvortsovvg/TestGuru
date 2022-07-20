@@ -17,7 +17,7 @@ firstUserID = User.first.id
 # ТЕСТЫ Backend
 category = Category.create(title: "Backend")
 
-new_test = Test.create(title: "Ruby", level: 2, category_id: category.id, author_id: firstUserID)
+new_test = Test.create(title: "Ruby", level: 2, category_id: category.id, author_id: firstUserID, is_active: true)
 
 question = Question.create(body: "Где указана пустая переменная (без значения)?", test_id: new_test.id)
 Answer.create(body: "some = nil", correct: true, question_id: question.id)
@@ -54,7 +54,7 @@ Result.create(user_id: firstUserID, test_id: new_test.id)
 # ТЕСТЫ Frontend
 category = Category.create(title: "Frontend")
 
-new_test = Test.create(title: "HTML", level: 1, category_id: category.id, author_id: User.last.id)
+new_test = Test.create(title: "HTML", level: 1, category_id: category.id, author_id: User.last.id, is_active: true)
 
 question = Question.create(body: "С помощью какого тега следует разделять абзацы?", test_id: new_test.id)
 Answer.create(body: "<br>", correct: true, question_id: question.id)
@@ -88,7 +88,7 @@ Answer.create(body: "<a>жирный</a>", question_id: question.id)
 
 Result.create(user_id: firstUserID, test_id: new_test.id)
 
-new_test = Test.create(title: "JavaScript", level: 2, category_id: category.id, author_id: firstUserID)
+new_test = Test.create(title: "JavaScript", level: 2, category_id: category.id, author_id: firstUserID, is_active: true)
 
 question = Question.create(body: "В чем отличие между локальной и глобальной переменной?", test_id: new_test.id)
 Answer.create(body: "Глобальные можно переопределять, локальные нельзя", question_id: question.id)

@@ -3,7 +3,8 @@ class TestsController < ApplicationController
   before_action :set_test, only: %i[start]
 
   def index
-    @tests = Test.left_joins(:questions).group(:id).having('COUNT(DISTINCT questions.id) > 0')
+    # @tests = Test.left_joins(:questions).group(:id).having('COUNT(DISTINCT questions.id) > 0')
+    @tests = Test.where(is_active: true)
   end
   
   def start
