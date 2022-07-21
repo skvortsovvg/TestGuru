@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm border" style="background-color: #e3f2fd;">
   <div class="container ms-3 justify-content-start">
-    <%= image_tag "test", size: "32", style: "margin-right: 5px" %> 
+    <%= image_tag "test.png", size: "32", style: "margin-right: 5px" %> 
     <a class="navbar-brand pe-4 border-end border-primary border-3 align-self-center" style="height: 40px;" href=<%= root_path %>>TestGuru</a>
     
     <div class="container g-0 justify-content-start">
@@ -8,20 +8,28 @@
         <% if current_user&.admin? %>
         <li class="nav-item">
           <a class="nav-link text-primary" href=<%= admin_tests_path %>>
-            <%= image_tag "gear", class: "bi d-block mx-auto mb-1", size: 24 %>
+            <%= image_tag "gear.svg", class: "bi d-block mx-auto mb-1", size: 24 %>
             <%= t(".admin") %>
           </a>
         </li>
         <li class="nav-item mx-2">
           <a class="nav-link text-primary" href=<%= admin_gists_path %>>
-            <%= image_tag "list", class: "bi d-block mx-auto mb-1", size: 24 %>
+            <%= image_tag "list.svg", class: "bi d-block mx-auto mb-1", size: 24 %>
             Gists
+          </a>
+        </li>
+        <% end %>
+        <% if current_user %>
+        <li class="nav-item">
+          <a class="nav-link text-primary" href=<%= new_contact_path %>>
+            <%= image_tag "at-solid.svg", class: "bi d-block mx-auto mb-1", size: 24%>
+            <%= t(".contact") %>
           </a>
         </li>
         <% end %>
         <li class="nav-item">
           <a class="nav-link text-primary" href=<%= about_path %>>
-            <%= image_tag "info", class: "bi d-block mx-auto mb-1", size: 24%>
+            <%= image_tag "info.svg", class: "bi d-block mx-auto mb-1", size: 24%>
             <%= t(".about") %>
           </a>
         </li>

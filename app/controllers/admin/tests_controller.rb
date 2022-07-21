@@ -43,7 +43,7 @@ class Admin::TestsController < Admin::BaseController
   private
 
   def test_params
-     params.require(:test).permit(:title, :category_id, :level)
+     params.require(:test).permit(:title, :category_id, :level, :is_active)
   end
 
   def set_test

@@ -1,0 +1,21 @@
+<h2>Форма обратной связи</h2>
+
+<%= form_with url: contact_path do |form| %>
+  <div class="container-fluid m-0 col-lg-6">
+    <div class="form-floating my-3">
+      <%= form.text_field :email, class: "form-control", id: :email, required: true, disabled: true, value: current_user.email, type: "email" %>
+      <%= form.label "Email", for: :email %>
+    </div>
+    <div class="form-floating my-3">
+      <%= form.text_area :message, class: "form-control vh-50", id: :msg, style: "height: 150px", required: true %>
+      <%= form.label t('.message'), for: :msg %>
+    </div>
+
+    <div>
+      <%= form.submit t('.send_contact'), class: "btn btn-primary col-lg-4" %>
+    </div>
+
+    <%= link_to t('nav_back'), admin_tests_path, class: "btn btn-link mt-2"  %>
+
+  </div>
+<% end %>

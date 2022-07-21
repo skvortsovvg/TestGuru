@@ -8,6 +8,7 @@ class Test < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :level }
 
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validate :validate_activation, on: :update, if: Proc.new { is_active }
 
   scope :easy, -> { where(level: (0..1)) }
   scope :normal, -> { where(level: (2..5)) }
@@ -24,4 +25,10 @@ class Test < ApplicationRecord
   def self.find_by_title_category(str)
     by_category(str).order("tests.title DESC").pluck("tests.title")
   end
+
+  private
+
+  def validate_activation 
+    errors.add(:Test, ": to activate it has to include at least one question!") if questions.count == 0
+  end 
 end

@@ -1,9 +1,10 @@
 class TestsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  # skip_before_action :authenticate_user!, only: :index
   before_action :set_test, only: %i[start]
 
   def index
-    @tests = Test.all
+    # @tests = Test.left_joins(:questions).group(:id).having('COUNT(DISTINCT questions.id) > 0')
+    @tests = Test.where(is_active: true)
   end
   
   def start

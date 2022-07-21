@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  get 'gists/index'
+ 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
+
+  get 'gists/index'
+ 
   scope "(:locale)", locale: /en|ru|/ do
     root "tests#index"
 
     get :about, action: :about, controller: 'application'
+    # get :contact, action: :contact, controller: 'application'
+    # post :contact, action: :send_contact, controller: 'application'
+
+    resource :contact, only: [:new, :create], controller: 'contact', path_names: { new: '/', create: '/' }
 
     devise_for :users, path: :students, path_names: { sign_in: :login, sign_out: :logout }
    
