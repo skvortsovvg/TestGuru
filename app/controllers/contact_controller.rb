@@ -4,7 +4,7 @@ class ContactController < ApplicationController
   end
 
   def create
-    if params[:message] then
+    if params[:message]
       ApplicationMailer.new.mail(to: current_user.email, 
                             subject: "Обращение пользователя TestGuru",
                             body: params[:message]).deliver!
