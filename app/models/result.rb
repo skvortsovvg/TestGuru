@@ -14,6 +14,8 @@ class Result < ApplicationRecord
 
   def accept!(answer_id)
     self.correct_questions += 1 if current_question.answers.find(answer_id).correct
+    self.score = result
+    self.passed = success?
     save!
   end
 

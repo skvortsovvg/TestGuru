@@ -22,7 +22,9 @@ ru:
   en: "Английский"
   ru: "Русский"
   password_reg: Пароль (6 символов минимум)
-
+  create: "Создать"
+  update: "Сохранить"   
+  
   helpers:
     select:
       prompt: "Сделайте выбор"
@@ -56,7 +58,16 @@ ru:
       admin: "Админпанель"
       about: "О проекте"
       contact: "Контакты"
+      tests: 'Тесты'
+      badges: 'Награды'
+      rules: 'Правила'
       f_pic: "https://img.icons8.com/emoji/48/000000/russia-emoji.png"
+  
+  badges:
+    my_badges:
+      my: "Мои"
+      all: "Все"
+      badges: 'Награды'
 
   tests:
     index:
@@ -99,6 +110,33 @@ ru:
       test:
         create: "Создать"
         update: "Сохранить"   
+
+    badges:
+      form:
+        title: "Наименование"
+        rule: "Правило награждения"
+        new_rule: "Создать правило"
+      new:
+        new_badge: "Новый бейдж"
+      edit:
+        edit_rule: "Редактирование бейджа"
+      index:
+        badges: "Награды"
+
+    reward_rules:
+      form:
+        title: "Наименование"
+        leftValue: "Левое условие"
+        comparsion: "Вид сравнения"
+        rightValue: "Правое условие"
+        additional: "Дополнительное условие"
+      new:
+        new_rule: "Новое правило"
+      edit:
+        edit_rule: "Редактирование правила"
+      index:
+        reward_rules: "Правила награждения"
+        add_new: "Добавить"
 
     questions:
       index:

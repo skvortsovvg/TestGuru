@@ -9,7 +9,13 @@ module ApplicationHelper
 
   def flash_msg
     flash.map do |key, value|
-      content_tag :div, value.html_safe, class: "alert alert-#{devise_status_to_bootstrap(key)} m-3", role: "alert"
+      if value.is_a?(Array)
+          value.map do |subvalue|
+              content_tag :div, subvalue.try(:html_safe), class: "alert alert-#{devise_status_to_bootstrap(key)} m-3", role: "alert"
+          end
+      else
+        content_tag :div, value.try(:html_safe), class: "alert alert-#{devise_status_to_bootstrap(key)} m-3", role: "alert"
+      end
     end.join().html_safe if flash.any?
   end
 

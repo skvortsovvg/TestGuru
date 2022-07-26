@@ -1,0 +1,41 @@
+<%= form_with model: [:admin, object] do |form| %>
+
+  <div class="form-floating my-3 col-md-5">
+    <%= form.text_field :title, class: "form-control" %>
+    <%= form.label t('.title'), for: :title %>
+  </div>
+
+  <div class="slider col-md-2 my-4">
+    <%= form.text_field :image, class: "form-control", id: 'imagename', type: "hidden", value: object.image %>
+    <div class="slider__container">
+      <div class="slider__wrapper">
+        <div class="slider__items">
+          <% @images.each do |value| %>
+            <div class="slider__item" data-imagename="<%= value %>">
+              <%= image_tag value, class: "bi d-block mx-auto mb-1", size: 24 %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="slider__control" data-slide="prev"></a>
+    <a href="#" class="slider__control" data-slide="next"></a>
+  </div>
+
+  <div class="row">
+    <div class="form-floating col-md-5">
+      <%= collection_select(:badge, :reward_rule_id, RewardRule.all, :id, :title, { prompt: true }, { class: "form-select", id: "reward_rule_select" }) %>
+      <%= form.label t('.rule'), class: "ms-2", for: "reward_rule_select" %>
+    </div>
+    <div class="col-md-2">   
+        <%= link_to t('.new_rule'), new_admin_reward_rule_path, class: "btn btn-link mt-2"  %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.submit object.new_record? ? t('create') : t('update'), class: "btn btn-primary col-lg-2 mt-3", id: "postbadgebutton" %>
+  </div>
+
+  <%= link_to t('nav_back'), admin_badges_path, class: "btn btn-link mt-2"  %>
+  
+<% end %>

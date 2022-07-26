@@ -1,11 +1,11 @@
 
-<%= form_with model: [:admin, @test, @question] do |form| %>
+<%= form_with model: [:admin, @test, object] do |form| %>
   <p>
     <%= form.label :body %><br>
     <%= form.text_area :body, cols: 100, rows: 5 %>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit object.new_record? ? t('create') : t('update') %>
   </p>
 <% end %>

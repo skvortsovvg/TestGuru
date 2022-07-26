@@ -37,7 +37,9 @@ en:
   en: "English"
   ru: "Russian"
   password_reg: Password (6 signs min)
-
+  create: "Create"
+  update: "Update"
+  
   helpers:
     submit:  
       question:
@@ -71,6 +73,9 @@ en:
       admin: "Administration"
       about: "About"
       contact: "Feedback"
+      tests: 'Tests'
+      badges: 'Badges'
+      rules: 'Rules'
       f_pic: "https://img.icons8.com/emoji/48/000000/united-kingdom-emoji.png"
 
   tests:
@@ -81,7 +86,13 @@ en:
       open:   "Open"
       delete: "Delete"
       edit:   "Edit"
-         
+  
+  badges:
+    my_badges:
+      my: "My"
+      all: "All"
+      badges: 'Badges'
+
   results:
     update:
       alert_make_choise: "Answer not accepted: select an answer"
@@ -116,6 +127,34 @@ en:
         title: "Tests"
       new:
         title: "Adding new test"
+    
+    badges:
+      form:
+        title: "Title"
+        rule: "Reward rule"
+        new_rule: "Add rule"
+      new:
+        new_badge: "New badge"
+      edit:
+        edit_rule: "Edit badge"
+      index:
+        badges: "Badges"
+
+    reward_rules:
+      form:
+        title: "Title"
+        leftValue: "Left value"
+        comparsion: "Cmparsion"
+        rightValue: "Right value"
+        additional: "Additional vaule"
+      new:
+        new_rule: "New rule"
+      edit:
+        edit_rule: "Edit rule"
+      index:
+        reward_rules: 'Reward rules'
+        add_new: "Add new"
+
     questions:
       index:
         title:    "Questions for test "

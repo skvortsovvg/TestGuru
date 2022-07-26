@@ -13,6 +13,10 @@ class ResultsController < ApplicationController
     else
       @result.accept!(params[:answer_id])
       if @result.completed?
+        Badge.check_rewards(@result, current_user).each do |badge|
+          flash[:notice] ||= [] 
+          flash[:notice] << "Получен новый бейдж: <strong>#{badge}</strong>"
+        end 
         redirect_to finish_result_path(@result)
       else
         redirect_to result_path(@result)
@@ -44,6 +48,7 @@ class ResultsController < ApplicationController
   def set_result
     @result = Result.find(params[:id])
   end
+  
   def set_gist
     @gist = Gist.find_by(question: @result.current_question, author: current_user)
   end

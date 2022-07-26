@@ -4,3 +4,4 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require myjs
+//= require chief-slider

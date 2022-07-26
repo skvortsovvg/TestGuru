@@ -1,0 +1,20 @@
+<h1><%= t('.reward_rules') %></h1>
+
+<div class="col-md-1 my-2">
+  <%= link_to t('.add_new'), new_admin_reward_rule_path, class: "btn btn-link my-2 border" %>
+</div>
+
+<% @rules.each do |rule| %>
+  <div class="row my-2">
+    <div class="col-md-3 mx-1">
+      <%= render inline: "#{rule.title}" %>
+    </div>
+    <div class="col-md-2 mx-1">
+      <%= link_to image_tag('edit.svg', size: 12), edit_admin_reward_rule_path(rule) %> |
+      <%= link_to image_tag('delete.svg', size: 12), admin_reward_rule_path(rule), method: :delete %>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to t('nav_back'), root_path %>
+

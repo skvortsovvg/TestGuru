@@ -1,0 +1,5 @@
+<div class="col-md-4 my-2 <%= "opacity-50" unless current_user.badges.ids.include?(badge.id) %>">
+  <span class="badge bg-secondary"><%= "x#{badge['count']}" if badge['count'] %></span>
+  <%= image_tag(badge.image, size: 25, class: "col-sm-1 p-0 align-self-center", style: 'width:50px') if badge.image %>
+  <span class="col-lg-4 align-middle p-0"><%= badge.title %></span>
+</div>

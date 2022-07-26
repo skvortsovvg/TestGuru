@@ -9,8 +9,8 @@
 
   <div class="row g-2">
     <div class="form-floating col-lg-5">
-    <%= collection_select(:test, :category_id, Category.all, :id, :title, { prompt: true }, { class: "form-select", id: "category_selector" }) %>
-    <%= form.label :category, for: "category_selector" %>
+      <%= collection_select(:test, :category_id, Category.all, :id, :title, { prompt: true }, { class: "form-select", id: "category_selector" }) %>
+      <%= form.label :category, for: "category_selector" %>
     </div>
 
     <div class="form-floating col-lg-3">
