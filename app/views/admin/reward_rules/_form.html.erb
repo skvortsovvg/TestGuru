@@ -5,16 +5,16 @@
       <%= form.label t('.title'), for: :title %>
     </div>
     <div class="form-floating my-3">
-      <%= form.text_area :leftValue, class: "form-control vh-50", id: :leftValue, style: "height: 150px", required: true %>
-      <%= form.label t('.leftValue'), for: :leftValue %>
+      <%= form.text_area :left_value, class: "form-control vh-50", id: :leftValue, style: "height: 150px", required: true %>
+      <%= form.label t('.left_value'), for: :leftValue %>
     </div>
     <div class="form-floating col-lg-3">
       <%= form.select :comparsion, %w(< > == !=), {}, class: "form-select", id: "comparsion" %>
       <%= form.label t('.comparsion'), for: "comparsion" %>
     </div>
     <div class="form-floating my-3">
-      <%= form.text_area :rightValue, class: "form-control vh-50", id: :rightValue, style: "height: 150px", required: true %>
-      <%= form.label t('.rightValue'), for: :rightValue %>
+      <%= form.text_area :right_value, class: "form-control vh-50", id: :rightValue, style: "height: 150px", required: true %>
+      <%= form.label t('.right_value'), for: :rightValue %>
     </div>
     <div class="form-floating my-3">
       <%= form.text_field :additional, class: "form-control" %>

@@ -28,8 +28,7 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :gists, only: :index
       resources :reward_rules
-      resources :badges do
-      end
+      resources :badges
       resources :tests do
         resources :questions, shallow: true do
           resources :answers, shallow: true

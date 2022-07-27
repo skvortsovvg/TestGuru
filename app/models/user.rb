@@ -8,17 +8,6 @@ class User < ApplicationRecord
           :validatable,
           :confirmable
 
-  scope :passed_with_level, ->(level) { results.joins(:test).where('tests.level = :level', level: level).count(:test_id) }
-  scope :passed_at_once, ->(test) { results.where(test: test, passed: true).count(:test_id) }
-  scope :passed_with_category, -> (category) { connection.select_one("SELECT 
-                                                                      COUNT(DISTINCT TESTS.id) AS TESTS_IN_CATEGORY,
-                                                                      COUNT(DISTINCT RESULTS.ID) AS PASSED_TESTS_IN_CATEGORY
-                                                                      FROM tests
-                                                                      LEFT JOIN results ON results.test_id = tests.id
-                                                                      AND results.user_id = #{id}
-                                                                      WHERE tests.category_id = #{category.id}
-                                                                      GROUP BY TESTS.category_id") }
-
   has_many :tests_by_me, class_name: "Test", foreign_key: "author_id"
  
   has_many :results

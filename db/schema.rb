@@ -77,9 +77,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_163929) do
 
   create_table "reward_rules", force: :cascade do |t|
     t.string "title", null: false
-    t.string "leftValue"
+    t.string "left_value"
     t.string "comparsion"
-    t.string "rightValue"
+    t.string "right_value"
     t.string "additional"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

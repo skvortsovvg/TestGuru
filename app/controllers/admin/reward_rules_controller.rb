@@ -36,6 +36,6 @@ class Admin::RewardRulesController < Admin::BaseController
   end
   
   def rule_params
-    params.require(:reward_rule).permit(:title, :leftValue, :comparsion, :rightValue, :additional)
+    params.require(:reward_rule).permit(:title, :left_value, :comparsion, :right_value, :additional)
   end
 end

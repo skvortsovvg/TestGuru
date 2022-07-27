@@ -14,8 +14,6 @@ class Result < ApplicationRecord
 
   def accept!(answer_id)
     self.correct_questions += 1 if current_question.answers.find(answer_id).correct
-    self.score = result
-    self.passed = success?
     save!
   end
 
@@ -39,5 +37,7 @@ class Result < ApplicationRecord
 
   def before_update_next_qst
     self.current_question = test.questions.where('id > ?', current_question.id).order(:id).first if test.present? && !completed?
+    self.score = result
+    self.passed = success?
   end
 end

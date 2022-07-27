@@ -13,7 +13,7 @@ class ResultsController < ApplicationController
     else
       @result.accept!(params[:answer_id])
       if @result.completed?
-        Badge.check_rewards(@result, current_user).each do |badge|
+        BadgesRewardService.check_rewards(@result, current_user).each do |badge|
           flash[:notice] ||= [] 
           flash[:notice] << "Получен новый бейдж: <strong>#{badge}</strong>"
         end 
