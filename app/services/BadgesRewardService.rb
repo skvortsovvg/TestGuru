@@ -3,9 +3,9 @@ class BadgesRewardService
   def self.check_rewards(result, current_user)
     Badge.all.select do |badge|
       begin 
-        leftv = eval(badge.reward_rule.leftValue);
-        rightv = eval(badge.reward_rule.rightValue);
-        current_user.badges << badge if eval("(#{leftv} #{badge.reward_rule.comparsion} #{rightv}) #{badge.reward_rule.additional}")
+        left_value = eval(badge.reward_rule.left_value);
+        right_value = eval(badge.reward_rule.right_value);
+        current_user.badges << badge if eval("(#{left_value} #{badge.reward_rule.comparsion} #{right_value}) #{badge.reward_rule.additional}")
       rescue => detail
         false
       end

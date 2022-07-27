@@ -121,7 +121,7 @@ Answer.create(body: 'Нет верных вариантов', question_id: quest
 
 Result.create(user_id: firstUserID, test_id: new_test.id)
 
-new_test = Test.create(title: "Node.js", level: 3, category_id: Сategory.first.id, author_id: firstUserID, is_active: true)
+new_test = Test.create(title: "Node.js", level: 3, category_id: Category.first.id, author_id: firstUserID, is_active: true)
 
 question = Question.create(body: "Что такое npm?", test_id: new_test.id)
 Answer.create(body: "Библиотека Node JS", question_id: question.id)
@@ -147,28 +147,28 @@ Category.create(title: "Psychology")
 Badge.create(title: "За почин!",
             image: "badges/award.svg",
             reward_rule: RewardRule.new(title: "За первое тестирование",
-                                       leftValue: "current_user.results.count",
-                                       rightValue: "1",
+                                       left_value: "current_user.results.count",
+                                       right_value: "1",
                                        comparsion: "=="))
 
 Badge.create(title: "С лёта!",
             image: "badges/ribbon.svg",
             reward_rule: RewardRule.new(title: "За прохождение с первой попытки",
-                                       leftValue: "current_user.results.where(test: result.test).count",
-                                       rightValue: "1",
+                                       left_value: "current_user.results.where(test: result.test).count",
+                                       right_value: "1",
                                        comparsion: "==",
                                        additional: "&& result.passed"))
 
 Badge.create(title: "Изи!",
             image: "badges/medal.svg",
             reward_rule: RewardRule.new(title: "За прохождение всех тестов 1-го уровня",
-                                       leftValue: "current_user.results.joins(:test).where('tests.level = 1 and results.passed').distinct.count(:test_id)",
-                                       rightValue: "Test.where(level: 1).count",
+                                       left_value: "current_user.results.joins(:test).where('tests.level = 1 and results.passed').distinct.count(:test_id)",
+                                       right_value: "Test.where(level: 1).count",
                                        comparsion: "=="))
 
 Badge.create(title: "Король Backend'a",
             image: "badges/trophy.svg", 
             reward_rule: RewardRule.new(title: "За прохождение всех тестов категории 'Backend'",
-                                       leftValue: "current_user.results.joins(:test).where('tests.category_id = 1 and results.passed').distinct.count(:test_id)",
-                                       rightValue: "Test.where(category: 1).count",
+                                       left_value: "current_user.results.joins(:test).where('tests.category_id = 1 and results.passed').distinct.count(:test_id)",
+                                       right_value: "Test.where(category: 1).count",
                                        comparsion: "=="))
