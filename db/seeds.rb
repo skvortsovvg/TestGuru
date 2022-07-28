@@ -115,7 +115,7 @@ Answer.create(body: 'alert ("Hi")', correct: true, question_id: question.id)
 Answer.create(body: 'info ("Hi")', question_id: question.id)
 Answer.create(body: 'Нет верных вариантов', question_id: question.id)
 
-new_test = Test.create(title: "Node.js", level: 3, category_id: Category.first.id, author_id: firstUserID, is_active: true, timespan: 1)
+new_test = Test.create(title: "Node.js", level: 3, category_id: Category.first.id, author_id: firstUserID, is_active: true, timespan: 0)
 
 question = Question.create(body: "Что такое npm?", test_id: new_test.id)
 Answer.create(body: "Библиотека Node JS", question_id: question.id)
