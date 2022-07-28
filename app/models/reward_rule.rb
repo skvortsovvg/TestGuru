@@ -1,0 +1,2 @@
+class RewardRule < ApplicationRecord
+end

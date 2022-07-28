@@ -10,7 +10,7 @@
 User.create([ { first_name: "Vladimir", email: "Vladimir@test.ru", password: "Test1234" }, 
               { first_name: "Dmitry", email: "Dmitry@test.ru", password: "Test1234" }, 
               { first_name: "Alexander", email: "Alexander@test.ru", password: "Test1234" }, 
-              { first_name: "Admin", email: "admin@test.ru", password: "Admin123", type: "Admin"}])
+              { first_name: "Admin", email: "admin@test.ru", password: "Admin123", type: "Admin", confirmed_at: Time.now}])
 
 firstUserID = User.first.id
 
@@ -119,7 +119,56 @@ Answer.create(body: 'alert ("Hi")', correct: true, question_id: question.id)
 Answer.create(body: 'info ("Hi")', question_id: question.id)
 Answer.create(body: 'Нет верных вариантов', question_id: question.id)
 
-Result.create(user_id: User.last.id, test_id: new_test.id)
+Result.create(user_id: firstUserID, test_id: new_test.id)
+
+new_test = Test.create(title: "Node.js", level: 3, category_id: Category.first.id, author_id: firstUserID, is_active: true)
+
+question = Question.create(body: "Что такое npm?", test_id: new_test.id)
+Answer.create(body: "Библиотека Node JS", question_id: question.id)
+Answer.create(body: "Расширение Node JS", question_id: question.id)
+Answer.create(body: "Пакетный менеджер", correct: true, question_id: question.id)
+Answer.create(body: "Технология для работы с сервером", question_id: question.id)
+
+question = Question.create(body: "Что можно писать на Node JS?", test_id: new_test.id)
+Answer.create(body: "Игры", question_id: question.id)
+Answer.create(body: "Десктопные программы и веб-сайты", question_id: question.id)
+Answer.create(body: "Веб-сайты", question_id: question.id)
+Answer.create(body: "Всё перечисленное", correct: true, question_id: question.id)
+
+question = Question.create(body: "На каком движке построен Node JS?", test_id: new_test.id)
+Answer.create(body: "V8", correct: true, question_id: question.id)
+Answer.create(body: "C++", question_id: question.id)
+Answer.create(body: "javascript", question_id: question.id)
+Answer.create(body: "W8", question_id: question.id)
 
 Category.create(title: "Administration")
 Category.create(title: "Psychology")
+
+Badge.create(title: "За почин!",
+            image: "badges/award.svg",
+            reward_rule: RewardRule.new(title: "За первое тестирование",
+                                       left_value: "current_user.results.count",
+                                       right_value: "1",
+                                       comparsion: "=="))
+
+Badge.create(title: "С лёта!",
+            image: "badges/ribbon.svg",
+            reward_rule: RewardRule.new(title: "За прохождение с первой попытки",
+                                       left_value: "current_user.results.where(test: result.test).count",
+                                       right_value: "1",
+                                       comparsion: "==",
+                                       additional: "&& result.passed"))
+
+Badge.create(title: "Изи!",
+            image: "badges/medal.svg",
+            reward_rule: RewardRule.new(title: "За прохождение всех тестов 1-го уровня",
+                                       left_value: "current_user.results.joins(:test).where('tests.level = 1 and results.passed').distinct.count(:test_id)",
+                                       right_value: "Test.where(level: 1).count",
+                                       comparsion: "=="))
+
+Badge.create(title: "Король Backend'a",
+            image: "badges/trophy.svg", 
+            reward_rule: RewardRule.new(title: "За прохождение всех тестов категории 'Backend'",
+                                       left_value: "current_user.results.joins(:test).where('tests.category_id = 1 and results.passed').distinct.count(:test_id)",
+                                       right_value: "Test.where(category: 1).count",
+                                       comparsion: "=="))

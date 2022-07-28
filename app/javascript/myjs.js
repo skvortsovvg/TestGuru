@@ -25,4 +25,3 @@ export function Sorting() {
       table.tBodies[0].append(...sortedRows)
   })
 }
-

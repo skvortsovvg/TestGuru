@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  leftValue: MyString
+  comparison: MyString
+  rightValue: MyString
+  additional: MyString
+
+two:
+  leftValue: MyString
+  comparison: MyString
+  rightValue: MyString
+  additional: MyString

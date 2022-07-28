@@ -1,0 +1,30 @@
+<%= form_with model: [:admin, object] do |form| %>
+  <div class="container-fluid m-0 col-lg-6">
+    <div class="form-floating my-3">
+      <%= form.text_field :title, class: "form-control" %>
+      <%= form.label t('.title'), for: :title %>
+    </div>
+    <div class="form-floating my-3">
+      <%= form.text_area :left_value, class: "form-control vh-50", id: :leftValue, style: "height: 150px", required: true %>
+      <%= form.label t('.left_value'), for: :leftValue %>
+    </div>
+    <div class="form-floating col-lg-3">
+      <%= form.select :comparsion, %w(< > == !=), {}, class: "form-select", id: "comparsion" %>
+      <%= form.label t('.comparsion'), for: "comparsion" %>
+    </div>
+    <div class="form-floating my-3">
+      <%= form.text_area :right_value, class: "form-control vh-50", id: :rightValue, style: "height: 150px", required: true %>
+      <%= form.label t('.right_value'), for: :rightValue %>
+    </div>
+    <div class="form-floating my-3">
+      <%= form.text_field :additional, class: "form-control" %>
+      <%= form.label t('.additional'), for: :additional %>
+    </div>
+
+    <div>
+      <%= form.submit object.new_record? ? t('create') : t('update'), class: "btn btn-primary col-lg-4" %>
+    </div>
+
+    <%= link_to t('nav_back'), admin_reward_rules_path, class: "btn btn-link mt-2"  %>
+  </div>
+<% end %>

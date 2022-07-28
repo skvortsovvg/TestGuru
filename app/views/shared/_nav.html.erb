@@ -6,20 +6,27 @@
     <div class="container g-0 justify-content-start">
       <ul class="navbar-nav">      
         <% if current_user&.admin? %>
-        <li class="nav-item">
-          <a class="nav-link text-primary" href=<%= admin_tests_path %>>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <%= image_tag "gear.svg", class: "bi d-block mx-auto mb-1", size: 24 %>
             <%= t(".admin") %>
           </a>
-        </li>
-        <li class="nav-item mx-2">
-          <a class="nav-link text-primary" href=<%= admin_gists_path %>>
-            <%= image_tag "list.svg", class: "bi d-block mx-auto mb-1", size: 24 %>
-            Gists
-          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href=<%= admin_tests_path %>><%= t(".tests") %></a></li>
+            <li><a class="dropdown-item" href=<%= admin_badges_path %>><%= t(".badges") %></a></li>
+            <li><a class="dropdown-item" href=<%= admin_reward_rules_path %>><%= t(".rules") %></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href=<%= admin_gists_path %>>Gists</a></li>
+          </ul>
         </li>
         <% end %>
         <% if current_user %>
+        <li class="nav-item">
+          <a class="nav-link text-primary" href=<%= my_badges_path %>>
+            <%= image_tag "list.svg", class: "bi d-block mx-auto mb-1", size: 24 %>
+            <%= t(".badges") %>
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link text-primary" href=<%= new_contact_path %>>
             <%= image_tag "at-solid.svg", class: "bi d-block mx-auto mb-1", size: 24%>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'badges/index'
+  get 'badges/new'
+  get 'badges/show'
+  get 'badges/create'
  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
@@ -9,9 +13,8 @@ Rails.application.routes.draw do
     root "tests#index"
 
     get :about, action: :about, controller: 'application'
-    # get :contact, action: :contact, controller: 'application'
-    # post :contact, action: :send_contact, controller: 'application'
-
+    get :my_badges, action: :my_badges, controller: 'badges'
+    
     resource :contact, only: [:new, :create], controller: 'contact', path_names: { new: '/', create: '/' }
 
     devise_for :users, path: :students, path_names: { sign_in: :login, sign_out: :logout }
@@ -24,6 +27,8 @@ Rails.application.routes.draw do
 
     namespace :admin do
       resources :gists, only: :index
+      resources :reward_rules
+      resources :badges
       resources :tests do
         resources :questions, shallow: true do
           resources :answers, shallow: true
