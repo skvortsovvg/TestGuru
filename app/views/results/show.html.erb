@@ -10,7 +10,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="text-center modal-title">Тестирование завершено</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class=" text-center modal-body">
         <%= @current_user.first_name %>, отведенное время для данного тестирования истекло! К сожалению, вы не успели пройти весь тест. Попробуйте в другой раз. 
@@ -60,38 +59,3 @@
   </div>
 </div>
 <% end %>
-
-<script src="https://rawgit.com/mckamey/countdownjs/master/countdown.js"></script>
-
-<script type="text/javascript">
-
-  document.addEventListener("DOMContentLoaded", () => {
-  
-    const format_value = (value) => value.toLocaleString( undefined, { minimumIntegerDigits: 2 });
-
-    const pageTimer =  document.getElementById('timer');
-    const timespan = new Date(pageTimer.dataset.time_out)
-    const time_is_up = new bootstrap.Modal(document.getElementById('time_is_up'))
-
-    if (!pageTimer.dataset.time_out) {
-      return
-    }
-
-    document.getElementById('clock').style.visibility = 'visible';
-    
-    if (timespan > new Date()) {
-      const units = countdown.HOURS | countdown.MINUTES | countdown.SECONDS;
-      var timerID = countdown(timespan, (ts) => {
-        pageTimer.innerHTML = `${format_value(ts.minutes)}:${format_value(ts.seconds)}`;
-        if (ts.value >= 0) {
-          clearInterval(timerID);
-          time_is_up.show();
-        }
-      }, units);
-    } else { 
-      time_is_up.show();
-    }
-
-  })
-
-</script>

@@ -2,6 +2,5 @@
 
 pin "application", preload: false
 pin "myjs"
-pin "chief-slider", preload: false
-
-
+pin "countdown.min"
+pin "chief-slider"
