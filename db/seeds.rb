@@ -17,7 +17,7 @@ firstUserID = User.first.id
 # ТЕСТЫ Backend
 category = Category.create(title: "Backend")
 
-new_test = Test.create(title: "Ruby", level: 2, category_id: category.id, author_id: firstUserID, is_active: true)
+new_test = Test.create(title: "Ruby", level: 2, category_id: category.id, author_id: firstUserID, is_active: true, timespan: 1)
 
 question = Question.create(body: "Где указана пустая переменная (без значения)?", test_id: new_test.id)
 Answer.create(body: "some = nil", correct: true, question_id: question.id)
@@ -49,12 +49,10 @@ Answer.create(body: "downcase()", correct: true, question_id: question.id)
 Answer.create(body: "upcase()", question_id: question.id)
 Answer.create(body: "down()", question_id: question.id)
 
-Result.create(user_id: firstUserID, test_id: new_test.id)
-
 # ТЕСТЫ Frontend
 category = Category.create(title: "Frontend")
 
-new_test = Test.create(title: "HTML", level: 1, category_id: category.id, author_id: User.last.id, is_active: true)
+new_test = Test.create(title: "HTML", level: 1, category_id: category.id, author_id: User.last.id, is_active: true, timespan: 2)
 
 question = Question.create(body: "С помощью какого тега следует разделять абзацы?", test_id: new_test.id)
 Answer.create(body: "<br>", correct: true, question_id: question.id)
@@ -86,9 +84,7 @@ Answer.create(body: "<p>жирный</p>", question_id: question.id)
 Answer.create(body: "<br>жирный</br>", question_id: question.id)
 Answer.create(body: "<a>жирный</a>", question_id: question.id)
 
-Result.create(user_id: firstUserID, test_id: new_test.id)
-
-new_test = Test.create(title: "JavaScript", level: 2, category_id: category.id, author_id: firstUserID, is_active: true)
+new_test = Test.create(title: "JavaScript", level: 2, category_id: category.id, author_id: firstUserID, is_active: true, timespan: 3)
 
 question = Question.create(body: "В чем отличие между локальной и глобальной переменной?", test_id: new_test.id)
 Answer.create(body: "Глобальные можно переопределять, локальные нельзя", question_id: question.id)
@@ -119,9 +115,7 @@ Answer.create(body: 'alert ("Hi")', correct: true, question_id: question.id)
 Answer.create(body: 'info ("Hi")', question_id: question.id)
 Answer.create(body: 'Нет верных вариантов', question_id: question.id)
 
-Result.create(user_id: firstUserID, test_id: new_test.id)
-
-new_test = Test.create(title: "Node.js", level: 3, category_id: Category.first.id, author_id: firstUserID, is_active: true)
+new_test = Test.create(title: "Node.js", level: 3, category_id: Category.first.id, author_id: firstUserID, is_active: true, timespan: 1)
 
 question = Question.create(body: "Что такое npm?", test_id: new_test.id)
 Answer.create(body: "Библиотека Node JS", question_id: question.id)

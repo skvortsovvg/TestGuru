@@ -5,7 +5,9 @@ class ResultsController < ApplicationController
 
   def show; end
 
-  def finish; end
+  def finish
+    @result.update(finished_at: Time.now) if params[:time_up]
+  end
 
   def update
     if params[:answer_id].blank?
