@@ -5,3 +5,4 @@
 //= require jquery_ujs
 //= require myjs
 //= require chief-slider
+//= require countdown.min

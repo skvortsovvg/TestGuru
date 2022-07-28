@@ -2,11 +2,22 @@
   <%= render 'shared/errors', object: test %>
 
 <div class="container-fluid m-0 col-lg-4">
-  <div class="form-floating my-3">
-    <%= form.text_field :title, class: "form-control", id: :test_title %>
-    <%= form.label :title, for: :test_title %>
-  </div>
+  <div class="row g-2">
+    <div class="form-floating my-3 col-lg-8">
+      <%= form.text_field :title, class: "form-control", id: :test_title %>
+      <%= form.label :title, for: :test_title %>
+    </div>
 
+    <% if !test.new_record? %>
+     <div class="form-check align-self-center mx-2 my-0 col-lg-2">
+        <%= form.check_box :is_active, class: "form-check-input", id: "is_active_check" %>
+        <%= form.label "Активный", class: "form-check-label", for: "is_active_check" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container-fluid mx-0 col-lg-4">
   <div class="row g-2">
     <div class="form-floating col-lg-5">
       <%= collection_select(:test, :category_id, Category.all, :id, :title, { prompt: true }, { class: "form-select", id: "category_selector" }) %>
@@ -18,12 +29,10 @@
       <%= form.label :level, for: "level_selector" %>
     </div>
 
-    <% if !test.new_record? %>
-     <div class="form-check mt-3 ms-2 align-self-center col-lg-2">
-        <%= form.check_box :is_active, class: "form-check-input", id: "is_active_check" %>
-        <%= form.label "Активный", class: "form-check-label", for: "is_active_check" %>
-      </div>
-    <% end %>
+    <div class="form-floating col-lg-4">
+      <%= form.text_field :timespan, class: "form-control", id: "timespan" %>
+      <%= form.label 'Время, мин.', for: :timespan %>
+    </div>
   </div>
 
 
