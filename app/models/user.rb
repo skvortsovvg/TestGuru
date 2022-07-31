@@ -28,6 +28,6 @@ class User < ApplicationRecord
   end
 
   def test_passing(test)
-    results.where(test:).where.not(current_question: nil).first
+    results.where(test: test, finished_at: nil).where.not(current_question: nil).first
   end
 end

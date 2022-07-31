@@ -5,6 +5,7 @@ class Result < ApplicationRecord
 
   before_create :before_create_set_qst
   before_update :before_update_next_qst
+  before_update :before_update_check_final_results
 
   PASSING_LIMIT = 85
 
@@ -18,26 +19,31 @@ class Result < ApplicationRecord
   end
 
   def completed?
-    current_question.nil?
+    finished_at.present? 
   end
 
   def success?
-    result >= PASSING_LIMIT
-  end
-
-  def result
-    (self.correct_questions.to_f / test.questions.count * 100)
+    score >= PASSING_LIMIT
   end
 
   private
 
   def before_create_set_qst
-    self.current_question = test.questions.first if test.present? && completed?
+    self.current_question = test.questions.first if test.present? && current_question.nil?
   end
 
   def before_update_next_qst
     self.current_question = test.questions.where('id > ?', current_question.id).order(:id).first if test.present? && !completed?
-    self.score = result
-    self.passed = success?
+  end
+
+  def before_update_check_final_results    
+    
+    #if current_question is nil, means those was the last question and this test has been completed in time
+    self.finished_at = Time.now unless current_question
+    
+    if completed? 
+      self.score = (self.correct_questions.to_f / test.questions.count * 100)
+      self.passed = success?
+    end
   end
 end

@@ -5,30 +5,58 @@
   <div class="progress-bar" role="progressbar" style="width: <%= "#{prev_value}%" %>" aria-valuemin="0" aria-valuemax="100"><%= "#{'%.2f' % prev_value }%" %></div>
 </div>
 
+<div class="modal fade" id="time_is_up" data-bs-backdrop="static" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="text-center modal-title">Тестирование завершено</h5>
+      </div>
+      <div class=" text-center modal-body">
+        <%= @current_user.first_name %>, отведенное время для данного тестирования истекло! К сожалению, вы не успели пройти весь тест. Попробуйте в другой раз. 
+      </div>
+      <div class="modal-footer">
+        <%= button_to "Результат", finish_result_path(@result), class: "btn btn-primary", method: :get, data: { 'bs-dismiss': "modal params"}, params: { time_up: 3.month.ago } %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= form_with url: result_path(@result), method: :put do |form| %>
 <%= render "shared/errors", object: @result %>
 
-<div class="card" data-current-qst-number="<%= @result.answered_questions %>" data-qst-count="<%= @result.test.questions.count %>">
-  <div class="card-header">
-    <%= "#{ Question.model_name.human} № #{@result.answered_questions + 1}. #{@result.current_question.body}"  %>
+  <div class="card" data-current-qst-number="<%= @result.answered_questions %>" data-qst-count="<%= @result.test.questions.count %>">
+    <div class="card-header py-0">
+
+      <div class="d-flex m-1">
+        <div class="p-2 w-100">
+          <strong><%= "#{ Question.model_name.human} №#{@result.answered_questions + 1}. " %></strong><%= @result.current_question.body %> 
+        </div>
+      <div class="p-2 flex-shrink-2 align-self-center border-start border-2 border-opacity-75" style="visibility: hidden" id="clock">
+          <div class="d-flex px-3">
+            <%= image_tag "clock.svg", size: 24 %>  
+            <div class="ps-3" id="timer" data-time_out="<%= (@result.created_at + @result.test.timespan.minutes).to_s if @result.test.timespan > 0 %>">00:00</div>
+          </div>
+      </div>
+    </div>
+    </div>
+    <div class="card-body">
+      <%= form.collection_radio_buttons :answer_id, @result.current_question.answers, :id, :body, include_hidden: false do |b| %>
+        <p>
+          <%= b.radio_button class: "form-check-input align-middle" %>
+          <%= b.label class: "form-check-label ms-2 align-middle" %>
+        </p>
+      <% end %>
+      <%= link_to t('.to_tests'), tests_path, class: "btn btn-primary" %>
+      <%= form.submit t('.next'), class: "btn btn-success" %>    
+    </div>
+    <div class="card-footer text-muted">
+      <%= "#{@result.answered_questions + 1} из #{@result.test.questions.count}" %> | 
+      <% if @gist %> 
+        <%= link_to "Gist: #{@gist.gist_id}", "https://gist.github.com/" + @gist.gist_id %>
+      <% else %>
+        <%= link_to t('.create_new_gist'), new_gist_result_path(@result), method: :post %>
+      <% end %>
+    </div>
   </div>
-  <div class="card-body">
-    <%= form.collection_radio_buttons :answer_id, @result.current_question.answers, :id, :body, include_hidden: false do |b| %>
-      <p>
-        <%= b.radio_button class: "form-check-input align-middle" %>
-        <%= b.label class: "form-check-label ms-2 align-middle" %>
-      </p>
-    <% end %>
-    <%= link_to t('.to_tests'), tests_path, class: "btn btn-primary" %>
-    <%= form.submit t('.next'), class: "btn btn-success" %>    
-  </div>
-  <div class="card-footer text-muted">
-    <%= "#{@result.answered_questions + 1} из #{@result.test.questions.count}" %> | 
-    <% if @gist %> 
-      <%= link_to "Gist: #{@gist.gist_id}", "https://gist.github.com/" + @gist.gist_id %>
-    <% else %>
-      <%= link_to t('.create_new_gist'), new_gist_result_path(@result), method: :post %>
-    <% end %>
-  </div>
-</div>
+  
 <% end %>
