@@ -10,33 +10,6 @@ if (window.location.pathname.includes('/results/')) {
     pb.style.width = pb.innerText = `${progress_value.toFixed(2)}%`;
   })
 
-  document.addEventListener("DOMContentLoaded", () => {
-  
-    const format_value = (value) => value.toLocaleString( undefined, { minimumIntegerDigits: 2 });
-    const pageTimer =  document.getElementById('timer');
-    const timespan = new Date(pageTimer.dataset.time_out)
-    const time_is_up = new bootstrap.Modal(document.getElementById('time_is_up'))
-
-    if (!pageTimer.dataset.time_out) {
-      return
-    }
-
-    document.getElementById('clock').style.visibility = 'visible';
-    
-    if (timespan > new Date()) {
-      const units = countdown.HOURS | countdown.MINUTES | countdown.SECONDS;
-      var timerID = countdown(timespan, (ts) => {
-        pageTimer.innerHTML = `${format_value(ts.minutes)}:${format_value(ts.seconds)}`;
-        if (ts.value >= 0) {
-          clearInterval(timerID);
-          time_is_up.show();
-        }
-      }, units);
-    } else { 
-      time_is_up.show();
-    }
-
-  })
 }
 
 export function Sorting() {

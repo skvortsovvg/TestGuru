@@ -19,7 +19,7 @@ class Result < ApplicationRecord
   end
 
   def completed?
-    finished_at 
+    finished_at.present? 
   end
 
   def success?
